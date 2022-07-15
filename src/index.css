@@ -1,16 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Orbitron:wght@600&display=swap');
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  --color1: #BDBDC2;
+  --color2: #151F35;
+  --color3: #2C3C5B;
+  --color4: #0CC5A8;
+  --color5: #51F3DA;
+  --color6: #5E738E;
+  --color7: #869CB8;
+  --color8: #A7ACB0;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,body{
+  height: 100%;
+  width: 100%;
+  font-family: Manrope, sans-serif;
+  line-height: 1.6;
+}
+
+.link {
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: var(--color2);
+  color: #fff;
+  height: 30px;
+  padding: .5rem;
 }
