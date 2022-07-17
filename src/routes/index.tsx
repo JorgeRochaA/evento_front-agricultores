@@ -1,17 +1,15 @@
 import React from 'react'
 import {Route, Routes, BrowserRouter} from 'react-router-dom'
-import Inicio from '../pages/inicio'
+import Home from '../pages/home'
 import Login from '../pages/login'
-import RegistrarUsuario from '../pages/registrar-usuario'
+import UserRegister from '../pages/user-register'
 
 const routes  = () => (
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<Inicio/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/register" element={<RegistrarUsuario/>}/>
-        </Routes>
-    </BrowserRouter>
+    <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<UserRegister/>}/>
+    </Routes>
 )
 
 export default routes
