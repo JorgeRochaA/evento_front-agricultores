@@ -90,7 +90,7 @@ const App = () => {
     try{
       setLoading(true)
       let res =  await registerUser({
-        email: data.username, 
+        email: data.email,    
         password: data.password, 
         username: data.username
       }) 
