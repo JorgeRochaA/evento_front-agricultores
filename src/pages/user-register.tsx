@@ -13,11 +13,11 @@ import {useForm, SubmitHandler} from 'react-hook-form'
 import { registerUser, formValuesRegister } from '../services/auth'
 import { yupResolver } from '@hookform/resolvers/yup';
 import {schemaRegister} from '../schemas/auth'
+import useTimer from '../hooks/useTimer'
 
 const App = () => {  
-  const [isRegister, setIsRegister] = useState<boolean>(false)
   const [isLoading, setLoading] = useState<boolean>(false)
-  let timer:ReturnType<typeof setTimeout>
+  const {value: showMessage, initTimer} = useTimer(2)
 
   const {register, handleSubmit, formState:{errors}} = useForm<formValuesRegister>({
     mode: 'onBlur',
@@ -33,12 +33,9 @@ const App = () => {
         password: data.password, 
         username: data.username
       }) 
-      setIsRegister(true)
+     
       setLoading(false)
-      if(timer) clearInterval(timer)
-      timer = setTimeout(function(){
-        setIsRegister(false)
-      }, 2000);
+      initTimer()
 
     }catch(error){
       console.log(error)
@@ -51,7 +48,7 @@ const App = () => {
   return (
     <Card>
       <ImageUser/>
-      {isRegister && <Message>Usuario Creado</Message>}
+      {showMessage && <Message>Usuario Creado</Message>}
       <form action="" onSubmit={handleSubmit(onSubmit)} style={styleForm}>
         <Label htmlFor="">Usuario</Label>
         <Input type="text" {...register("username")}/>
