@@ -1,0 +1,73 @@
+import styled from "styled-components";
+import user from '../../assets/user.png'
+
+export const Card = styled.main`
+  max-width: 400px;
+  box-shadow: 0 4px 4px #5E738E80;
+  padding: 40px;
+  border-radius: 4px;
+  background-color: var(--color9);
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(0,0,0,.125);
+`
+
+export const ImageCircle = styled.img`
+  display: block;
+  border-radius: 50%;
+  height: 96px;
+  width: 96px;
+`
+export const ImageUser =  () => {
+    return (<ImageCircle src={user}/>)
+}
+
+export const Input = styled.input`
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  display: block;
+  border-radius: 0.25rem;  
+  border: 1px solid #ced4da;
+  margin-top: .5rem;
+  width: 100%;
+
+`
+export const Label = styled.label`
+  margin-top: .5rem;
+  align-self: flex-start;
+  color: var(--color3);
+  font-weight: bold;
+`
+
+export const Button = styled.button`
+  margin-top: .5rem;
+  padding: 0.375rem 0.75rem;
+  color: var(--color9);
+  background-color: var(--color3);
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+`
+export const Error = styled.p`
+  color: red;
+`
+
+export const Message = styled.div`
+  border-radius: 5px;
+  background-color: var(--color1);
+  color: var(--color2);
+  text-align: center;
+  height: 40px;
+  margin: .5rem 0;
+  padding: .5rem;
+  width: 100%;
+`
+
+export const MessageError = styled(Message)`
+    background-color: var(--colorError);
+    color: #fff;
+`
