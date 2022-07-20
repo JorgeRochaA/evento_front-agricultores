@@ -1,7 +1,9 @@
-import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.png'
+import UserInfo from '../../components/user'
+import { useAppSelector } from '../../redux/hooks'
+import {selectUser} from '../../redux/slices/auth'
 
 const Container = styled.nav`
   width: 100%;
@@ -21,13 +23,12 @@ const Logo = styled.img`
 
 const ItemContainer = styled.div`
   display: flex;
-  gap: 10px;
-  justify-content: center;
-  font-weight: bold;
+  gap: 10px; 
   flex-grow: 1;
-  justify-content: end;
+  justify-content: flex-end;   
 `
 const Item = styled.div`
+  font-weight: bold;
   & > a {
     text-decoration:none;
     color: inherit;
@@ -35,7 +36,8 @@ const Item = styled.div`
 
 `
 
-const navbar = () => {
+const header = () => {
+  const user = useAppSelector(selectUser)
   return (
     <Container>
         <Link to="/">
@@ -43,15 +45,16 @@ const navbar = () => {
         </Link>   
           <ItemContainer>
               <Item>Lista de mayorista</Item>
-              <Item>
-              <Link to="/register">Registrase</Link>
-              </Item>
-              <Item>
-              <Link to="/login" className='link'>Iniciar sesión</Link>
-              </Item>
+              { user.token ?
+                <Item><UserInfo username={user?.username}/></Item>                                
+                :<>
+                  <Item><Link to="/register">Registrarse</Link></Item>
+                  <Item><Link to="/login" className='link' >Iniciar sesión</Link></Item>                
+                </>
+              }              
           </ItemContainer>
     </Container>
   )
 }
 
-export default navbar
+export default header
