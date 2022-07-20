@@ -20,8 +20,12 @@ export const ImageCircle = styled.img`
   height: 96px;
   width: 96px;
 `
-export const ImageUser =  () => {
-    return (<ImageCircle src={user}/>)
+
+interface params {
+  style?: React.CSSProperties
+}
+export const ImageUser =  (params: params) => {
+    return (<ImageCircle src={user} style={params.style}/>)
 }
 
 export const Input = styled.input`
@@ -51,6 +55,10 @@ export const Button = styled.button`
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
+
+  &:hover {
+    background-color: var(--color2);
+  }
 `
 export const Error = styled.p`
   color: red;
