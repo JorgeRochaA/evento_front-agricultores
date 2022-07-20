@@ -15,6 +15,8 @@ import { useNavigate } from 'react-router-dom'
 import useTimer from '../hooks/useTimer'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaLogin } from '../schemas/auth'
+import { useAppDispatch } from '../redux/hooks'
+import {add, loginAsync} from '../redux/slices/auth'
 
 const login = () => {
   const [isLoading, setLoading] = useState<boolean>(false)
@@ -24,17 +26,17 @@ const login = () => {
     resolver: yupResolver(schemaLogin)
   })
   let navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   const onSubmit:SubmitHandler<formValues> =  async (data) => { 
 
     try{
-      setLoading(true)
-        let res =  await loginUser({ 
-        password: data.password, 
-        username: data.username
-      })     
-      setToken(res.data) 
-      setToken({"token":"token"})
+       setLoading(true)
+      //let res =  await loginUser(data)     
+      //setToken(res.data)  
+      //dispatch(loginAsync(data))
+      setToken("token")
+      dispatch(add({username: data.username, token: 'token'}))
       navigate("/panel-user", {replace:true})
 
     }catch(error){

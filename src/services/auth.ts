@@ -20,7 +20,7 @@ export const loginUser = (data: formValues) => {
     return axios.post( `${URL}/login`, data)
 }
 
-export const setToken = (userToken:object) => {
+export const setToken = (userToken:string) => {
     sessionStorage.setItem('token', JSON.stringify(userToken))
 }
 
@@ -28,4 +28,8 @@ export const  getToken = () => {
     const token:any = sessionStorage.getItem('token');
     const userToken = JSON.parse(token);
     return userToken
-  }
+}
+
+export const removeToken = () => {
+    sessionStorage.removeItem('token')
+}
