@@ -7,10 +7,10 @@ import {selectUser} from '../../redux/slices/auth'
 
 const Container = styled.nav`
   width: 100%;
-  height: 56px;
+  height: 9vh;
   color: var(--color2);
   background-color: #F5F5F5;
-  box-shadow: 0px 4px #5E738E80;
+  border-bottom: 1px solid #cdcdcd;
   padding: .5rem 1rem;
   display: flex;
   flex-direction: row;
@@ -46,7 +46,10 @@ const header = () => {
           <ItemContainer>
               <Item>Lista de mayorista</Item>
               { user.token ?
-                <Item><UserInfo username={user?.username}/></Item>                                
+                <>
+                  <Item><Link to="/panel-user">Panel</Link></Item>
+                  <Item><UserInfo username={user?.username}/></Item>                                
+                </>
                 :<>
                   <Item><Link to="/register">Registrarse</Link></Item>
                   <Item><Link to="/login" className='link' >Iniciar sesión</Link></Item>                
