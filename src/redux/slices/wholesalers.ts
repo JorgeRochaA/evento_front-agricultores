@@ -1,40 +1,40 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { loginUser, formValues, setToken } from '../../services/auth' 
-import { stateAsync} from '../../types'
+import {formValues, filterWholesalers } from '../../services/wholesalers'
+import {stateAsync} from '../../types'
 
-interface user {
+interface wholesaler {
     username: string;
     token: string
 }
-interface authState {
-    user: user;
+
+interface wholesalersState {
+    wholesalers: wholesaler[];
     status: stateAsync
 }
 
-const initialState: authState = {
-    user: {username: '', token: ''},
+const initialState: wholesalersState = {
+    wholesalers: [],
     status: 'idle'
 }
 
 export const loginAsync = createAsyncThunk(
-    'auth/login', 
+    'wholesalers/filter', 
     async (data: formValues) => {
-        const res = await loginUser(data)
-        setToken("token")
+        const res = await filterWholesalers(data)
         return res.data
     }
 )
 
-export const authSlice = createSlice({
+export const wholesalers = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        add: (state, action: PayloadAction<user>) => {
-            state.user = action.payload
+        setWholesalers: (state, action: PayloadAction<wholesaler[]>) => {
+            state.wholesalers = action.payload
         },
-        remove: (state) => {
-            state.user = {username: '', token: ''}
+        clearWholesalers: (state) => {
+            state.wholesalers = []
         }
     },
     extraReducers: (builder) => {
@@ -44,7 +44,7 @@ export const authSlice = createSlice({
             })
             .addCase(loginAsync.fulfilled, (state, action)=> {
                 state.status = 'idle'
-                state.user = action.payload
+                state.wholesalers = action.payload
             })
             .addCase(loginAsync.rejected, (state)=> {
                 state.status = 'failed'
@@ -52,8 +52,8 @@ export const authSlice = createSlice({
     }
 })
 
-export const {add, remove} = authSlice.actions
+export const {setWholesalers, clearWholesalers} = wholesalers.actions
 
 export const selectUser = (state: RootState) => state.auth.user
 
-export default authSlice.reducer
+export default wholesalers.reducer

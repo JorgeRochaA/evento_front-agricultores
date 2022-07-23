@@ -1,6 +1,5 @@
 import axios from "axios"
-
-const URL:string = "https://agri-commerce.herokuapp.com"
+import { URL } from './base'
 
 export interface formValues {
     username: string;
@@ -10,7 +9,6 @@ export interface formValues {
 export interface formValuesRegister extends formValues {
     email:string;
 }
-
 
 export const registerUser = (data: formValuesRegister) =>{
     return axios.post(`${URL}/api/v1/registration`, data)
