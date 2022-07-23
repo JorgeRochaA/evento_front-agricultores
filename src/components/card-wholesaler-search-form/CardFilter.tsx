@@ -36,7 +36,7 @@ function CardFilter({ title, placeholder}: { title: string, placeholder: string}
           valueInput.map((val, index)=> (
             <div key={index} style={styleLabel}>
               <Label>{val}</Label>
-              <ButtonRed onClick={handleDelete}>✖</ButtonRed>
+              <ButtonRed onClick={handleDelete}>X</ButtonRed>
             </div>
           ))
         : <></> 
