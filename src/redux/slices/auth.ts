@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { loginUser, formValues, setToken } from '../../services/auth' 
+import { stateAsync} from '../../types'
 
 interface user {
     username: string;
@@ -8,7 +9,7 @@ interface user {
 }
 interface authState {
     user: user;
-    status: 'idle' |'loading' | 'failed'
+    status: stateAsync
 }
 
 const initialState: authState = {
