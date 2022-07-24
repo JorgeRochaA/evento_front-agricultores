@@ -10,19 +10,23 @@ const Container = styled.div`
 
 const Banner = styled.section`
   margin-top: 4px;
-  padding: 3rem 1rem;
+  padding: 3rem 0;
   display: flex;
-  gap: 2rem;
-  background: rgb(21, 31, 53);
-  background: linear-gradient(
-    90deg,
-    rgba(21, 31, 53, 1) 0%,
-    rgba(44, 60, 91, 1) 35%
-  );
+  flex-direction: column;
+  align-items: center;
+  @media screen and (min-width: 100px) {
+    flex-direction: row;
+  }
 `;
 
 const Contenido = styled.div`
-  width: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (min-width: 655px) {
+    width: 50%;
+  }
 `;
 
 const Title = styled.p`
@@ -31,30 +35,41 @@ const Title = styled.p`
   font-size: 3rem;
   line-height: 3rem;
   color: var(--color4);
-`;
-
-const Image = styled.div``;
-
-const BuyerImage = styled.img`
-  width: 600px;
-  display: block;
-  border-radius: 10px;
+  max-width: 90%;
+  text-align: center;
 `;
 
 const Paragraph = styled.p`
   font-size: 1.5rem;
   line-height: 2rem;
   color: Var(--color9);
+  max-width: 90%;
+  text-align: center;
 `;
+
+const Image = styled.div`
+  display: grid;
+  place-items: center;
+`;
+
+const BuyerImage = styled.img`
+  width: 600px;
+  display: block;
+  border-radius: 10px;
+  max-width: 90%;
+`;
+
 const SearchContainer = styled.div`
-  margin-top: 1rem;
+  margin: 1rem 0;
   display: flex;
+  max-width: 100%;
+  width: 90%;
 `;
 
 const Search = styled.input`
   line-height: 2.5rem;
   font-size: 1rem;
-  width: 17rem;
+  width: 85%;
   background: none;
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 0.5rem;
