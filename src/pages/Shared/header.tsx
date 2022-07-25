@@ -16,6 +16,8 @@ const Container = styled.nav`
   color: var(--color2);
   padding: 25px;
   border-bottom: 1px solid #cdcdcd;
+  position: sticky;
+  top: 0;
 `;
 
 const Burger = styled.div`
