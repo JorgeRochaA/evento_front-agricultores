@@ -9,13 +9,14 @@ const Container = styled.div`
 `;
 
 const Banner = styled.section`
-  margin-top: 4px;
-  padding: 3rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media screen and (min-width: 100px) {
+  margin-top: 4px;
+  padding: 3rem 0;
+  @media screen and (min-width: 1253px) {
     flex-direction: row;
+    justify-content: space-between;
   }
 `;
 
@@ -25,7 +26,15 @@ const Contenido = styled.div`
   flex-direction: column;
   align-items: center;
   @media screen and (min-width: 655px) {
+    width: 70%;
+  }
+  @media screen and (min-width: 1253px) {
+    height: 350px;
     width: 50%;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 5%;
   }
 `;
 
@@ -37,6 +46,10 @@ const Title = styled.p`
   color: var(--color4);
   max-width: 90%;
   text-align: center;
+  @media screen and (min-width: 1253px) {
+    text-align: left;
+    width: 600px;
+  }
 `;
 
 const Paragraph = styled.p`
@@ -45,31 +58,50 @@ const Paragraph = styled.p`
   color: Var(--color9);
   max-width: 90%;
   text-align: center;
+  @media screen and (min-width: 1253px) {
+    text-align: left;
+    width: 600px;
+  }
 `;
 
 const Image = styled.div`
-  display: grid;
-  place-items: center;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (min-width: 725px) {
+    width: 70%;
+  }
+  @media screen and (min-width: 1253px) {
+    height: 450px;
+    width: 50%;
+  }
 `;
 
 const BuyerImage = styled.img`
-  width: 600px;
   display: block;
   border-radius: 10px;
-  max-width: 90%;
+  max-width: 100%;
+  @media screen and (min-width: 1253px) {
+    height: 350px;
+  }
 `;
 
 const SearchContainer = styled.div`
   margin: 1rem 0;
   display: flex;
+  justify-content: center;
   max-width: 100%;
   width: 90%;
+  @media screen and (min-width: 585px) {
+    width: 400px;
+  }
 `;
 
 const Search = styled.input`
   line-height: 2.5rem;
   font-size: 1rem;
-  width: 85%;
+  width: 90%;
   background: none;
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 0.5rem;
