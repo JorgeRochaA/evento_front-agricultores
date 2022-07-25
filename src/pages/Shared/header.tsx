@@ -18,6 +18,7 @@ const Container = styled.nav`
   border-bottom: 1px solid #cdcdcd;
   position: sticky;
   top: 0;
+  z-index: 2;
 `;
 
 const Burger = styled.div`
