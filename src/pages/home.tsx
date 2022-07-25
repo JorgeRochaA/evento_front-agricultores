@@ -12,7 +12,6 @@ const Banner = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 4px;
   padding: 3rem 0;
   @media screen and (min-width: 1253px) {
     flex-direction: row;
