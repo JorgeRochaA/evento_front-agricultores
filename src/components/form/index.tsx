@@ -69,7 +69,6 @@ export const Message = styled.div`
   background-color: var(--color1);
   color: var(--color2);
   text-align: center;
-  height: 40px;
   margin: .5rem 0;
   padding: .5rem;
   width: 100%;

@@ -20,7 +20,7 @@ import {add, loginAsync} from '../redux/slices/auth'
 
 const login = () => {
   const [isLoading, setLoading] = useState<boolean>(false)
-  const {value: showMessage, initTimer} = useTimer(2)
+  const {showMessage, initTimer} = useTimer(2)
   const {register, handleSubmit, formState: {errors}} = useForm<formValues>({
     mode: 'onBlur',
     resolver: yupResolver(schemaLogin)
