@@ -1,5 +1,5 @@
 import { CardFilters, Input, Label, ButtonRed} from '../form'
-import { styleLabel } from '../styles/index'
+import { styleContainterItemLabel } from '../styles/index'
 import { useState } from "react";
 
 function CardFilter({ title, placeholder}: { title: string, placeholder: string}) {
@@ -10,6 +10,7 @@ function CardFilter({ title, placeholder}: { title: string, placeholder: string}
   const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => setValueInput([event.target.value])
 
   const handleEvent= (event:any) => {
+    console.log(valueInput);
     if(event.key === 'Enter'){
       setIsEnter(true)
     }else{
@@ -18,7 +19,6 @@ function CardFilter({ title, placeholder}: { title: string, placeholder: string}
   }
 
   const handleDelete= () => {
-    valueInput.splice(0)
     setIsEnter(false)
   }
   
@@ -34,7 +34,7 @@ function CardFilter({ title, placeholder}: { title: string, placeholder: string}
       {
         isEnter===true ? 
           valueInput.map((val, index)=> (
-            <div key={index} style={styleLabel}>
+            <div key={index} style={styleContainterItemLabel}>
               <Label>{val}</Label>
               <ButtonRed onClick={handleDelete}>X</ButtonRed>
             </div>

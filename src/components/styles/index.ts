@@ -6,7 +6,7 @@ export const styleForm:React.CSSProperties = {
     flexDirection:"column"
 }
 
-export const styleLabel:React.CSSProperties ={
+export const styleContainterItemLabel:React.CSSProperties ={
     display: 'flex',
     justifyContent: 'space-around',
     width: '100%',
