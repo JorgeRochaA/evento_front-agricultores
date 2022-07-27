@@ -1,4 +1,5 @@
-export const URL:string = "https://agri-commerce.herokuapp.com"
+//export const URL:string = "https://agri-commerce.herokuapp.com"
+export const URL:string = "http://localhost:8080"
 
 export const createParameters = (data: object) : string => {
     let parameters: string = "";
@@ -10,4 +11,12 @@ export const createParameters = (data: object) : string => {
     })  
     
     return (parameters.length > 0)? parameters.substring(1): parameters
+}
+
+export interface errorService{
+    error: string;
+    message: string;
+    path: string;
+    status: number;
+    timestamp: string;
 }

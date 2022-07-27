@@ -10,8 +10,14 @@ export interface formValuesRegister extends formValues {
     email:string;
 }
 
-export const registerUser = (data: formValuesRegister) =>{
-    return axios.post(`${URL}/api/v1/registration`, data)
+export interface registerUserResponse {
+    token: string
+}
+//<registerUserResponse>
+export const registerUser = async (data: formValuesRegister) =>{
+    let res = await axios.post<registerUserResponse>(`${URL}/api/v1/registration`, data)
+    console.log(res)
+    return res.data
 }
 
 export const loginUser = (data: formValues) => {
