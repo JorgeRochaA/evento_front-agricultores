@@ -17,7 +17,7 @@ export const Card = styled.main`
 
 export const CardFilters = styled.main`
   max-width: 300px;
-  box-shadow: 0 4px 4px #5E738E80;
+  box-shadow: 0 4px 4px #5e738e80;
   padding: 10px;
   border-radius: 4px;
   background-color: var(--color9);
@@ -25,8 +25,8 @@ export const CardFilters = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid rgba(0,0,0,.125);
-`
+  border: 1px solid rgba(0, 0, 0, 0.125);
+`;
 
 export const ImageCircle = styled.img`
   display: block;
@@ -75,7 +75,7 @@ export const Button = styled.button`
 `;
 
 export const ButtonRed = styled.button`
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   padding: 0.375rem 0.75rem;
   color: var(--color9);
   background-color: var(--colorError);
@@ -88,6 +88,7 @@ export const ButtonRed = styled.button`
   &:hover {
     background-color: red;
   }
+`;
 
 export const Error = styled.p`
   color: red;
@@ -98,8 +99,8 @@ export const Message = styled.div`
   background-color: var(--color1);
   color: var(--color2);
   text-align: center;
-  margin: .5rem 0;
-  padding: .5rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
   width: 100%;
 `;
 
