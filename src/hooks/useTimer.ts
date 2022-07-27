@@ -1,18 +1,21 @@
 import { useState } from "react"
 
-const useTimer = (seconds: number) => {
-    const [value, setValue] = useState<boolean>(false)
+const useTimerMessage = (seconds: number) => {
+    const [showMessage, setShowMessage] = useState<boolean>(false)
     let timer:ReturnType<typeof setTimeout>
 
     const initTimer = () => { 
-        setValue(true)
+        setShowMessage(true)
         if(timer) clearInterval(timer)
         timer = setTimeout(function(){
-            setValue(false)
+            setShowMessage(false)
         }, seconds * 1000);
     }
+    
+    const activateShowMessage  = () => setShowMessage(true)    
+    const disabledShowMessage  = () => setShowMessage(false)    
 
-    return {value, initTimer}
+    return {showMessage, initTimer, activateShowMessage, disabledShowMessage}
 }
 
-export default useTimer
+export default useTimerMessage
