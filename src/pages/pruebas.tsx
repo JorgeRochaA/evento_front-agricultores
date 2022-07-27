@@ -1,12 +1,7 @@
-import React from 'react'
-import Jor from '../components/jor'
+import React from "react";
 
 const pruebas = () => {
-  return (
-    <div>
-        <Jor/>
-    </div>
-  )
-}
+  return <div></div>;
+};
 
-export default pruebas
+export default pruebas;
