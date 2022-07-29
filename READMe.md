@@ -6,8 +6,9 @@ Sitio web para que agricultores pequeños, medianos y grandes hagan llegar sus p
 
 ## Ejecutar el proyecto
 1. Clone el branch develop
-2. Ejecutar el comando: npm install
-3. Ejecutar el comando: npm run dev
+2. Moverse a la carpeta "evento_front-agricultores"
+3. Ejecutar el comando: npm install
+4. Ejecutar el comando: npm run dev
 
 ## Integrantes
 
