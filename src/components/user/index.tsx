@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { ImageUser } from "../form";
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
 import { Button } from "../form";
-import { removeToken } from "../../services/auth";
+import { removeTokenAndUser } from "../../services/auth";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
-import { remove } from "../../redux/slices/auth";
-import { Method } from "axios";
+import { removeUser } from "../../redux/slices/auth";
+
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -46,20 +47,20 @@ const User = (params: params) => {
   let navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const handleSignOff = () => {
+  const handleLogOut = () => {
     params.toggleMenu();
-    removeToken();
-    dispatch(remove());
+    removeTokenAndUser();
+    dispatch(removeUser());
     navigate("/", { replace: true });
-  };
+  };  
 
   return (
     <Container onClick={() => setVisibleOptions(!visibleOptions)}>
       <ImageUser style={{ height: "30px", width: "30px" }} />
-      <span>{params.username}</span>
+      <span>@{params.username}</span>
       {visibleOptions ? <MdOutlineArrowDropUp /> : <MdOutlineArrowDropDown />}
       <DropDownContainer visible={visibleOptions}>
-        <Button onClick={handleSignOff}>Cerrar sesión</Button>
+        <Button onClick={handleLogOut}>Cerrar sesión</Button>
       </DropDownContainer>
     </Container>
   );
