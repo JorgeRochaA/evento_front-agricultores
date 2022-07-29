@@ -8,8 +8,11 @@ interface params {
 
 
 const privateRoute = (params: params) : any => {
+
   const token = getToken()
+
   if(!token){
+    console.log('proteccion')
     return <Navigate to="/login" replace={true}/>
   }
 
