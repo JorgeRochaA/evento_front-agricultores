@@ -7,6 +7,6 @@ export const schemaRegister = yup.object().shape({
   }).required();
 
 export const schemaLogin = yup.object().shape({
-    username: yup.string().required("Usuario requerido"),
+    email: yup.string().email( "Debe ser un correo").required("Email requerido"),
     password: yup.string().required("Constraseña requerido."),
   }).required();
