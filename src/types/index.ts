@@ -1,5 +1,5 @@
 
-export type stateAsync = 'idle' |'loading' | 'failed';
+export type stateAsync = 'idle' | 'pending' | 'succeeded' | 'failed';
 
 export interface messageUser {
     message: string;
