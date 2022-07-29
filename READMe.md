@@ -5,9 +5,9 @@ Sitio web para que agricultores pequeños, medianos y grandes hagan llegar sus p
 1. Nodejs version superior a 14.18+, 16+
 
 ## Ejecutar el proyecto
-1. Clone el branch
-2. npm install
-3. npm run dev
+1. Clone el branch develop
+2. Ejecutar el comando: npm install
+3. Ejecutar el comando: npm run dev
 
 ## Integrantes
 
