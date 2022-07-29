@@ -1,12 +1,6 @@
-import { Link } from "react-router-dom";
-import { selectUser } from "../../redux/slices/auth";
-import { useAppSelector } from "../../redux/hooks";
-import { useState } from "react";
-import logo from "../../assets/logo.png";
 import styled from "styled-components";
-import UserInfo from "../../components/user";
 
-const Container = styled.nav`
+export const Container = styled.nav`
   height: 70px;
   width: 100%;
   display: flex;
@@ -21,7 +15,7 @@ const Container = styled.nav`
   z-index: 2;
 `;
 
-const Burger = styled.div`
+export const Burger = styled.div`
   height: 50px;
   width: 50px;
   display: flex;
@@ -50,12 +44,12 @@ const Burger = styled.div`
     display: none;
   }
 `;
-const Logo = styled.img`
+export const Logo = styled.img`
   height: 54px;
   margin-top: 6px;
 `;
 
-const ItemContainer = styled.div`
+export const ItemContainer = styled.div`
   position: absolute;
   top: 70px;
   left: -100%;
@@ -92,6 +86,7 @@ const ItemContainer = styled.div`
     }
   }
 `;
+
 export const Item = styled.div`
   font-weight: bold;
   width: 100%;
@@ -108,50 +103,3 @@ export const Item = styled.div`
     max-width: fit-content;
   }
 `;
-
-const header = () => {
-  const user = useAppSelector(selectUser);
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuIsOpen(!menuIsOpen);
-  };
-
-  return (
-    <Container>
-      <Link to="/">
-        <Logo src={logo} alt="logo" />
-      </Link>
-      <Burger className={menuIsOpen ? "open" : ""} onClick={toggleMenu}>
-        <div className="bar"></div>
-        <div className="bar"></div>
-      </Burger>
-      <ItemContainer className={menuIsOpen ? "open" : ""}>
-        <Item>Lista de mayorista</Item>
-        {user.token ? (
-          <>
-            <Item>
-              <Link to="/panel-user">Panel</Link>
-            </Item>
-            <Item>
-              <UserInfo username={user?.username} toggleMenu={toggleMenu} />
-            </Item>
-          </>
-        ) : (
-          <>
-            <Item onClick={toggleMenu}>
-              <Link to="/register">Registrarse</Link>
-            </Item>
-            <Item onClick={toggleMenu}>
-              <Link to="/login" className="link">
-                Iniciar sesión
-              </Link>
-            </Item>
-          </>
-        )}
-      </ItemContainer>
-    </Container>
-  );
-};
-
-export default header;
