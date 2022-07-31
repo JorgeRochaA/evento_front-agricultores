@@ -2,7 +2,10 @@ import styled from 'styled-components'
 import ItemAside from './Shared/itemAside'
 import {BsSearch } from 'react-icons/bs'
 import {BiMessageRoundedDetail } from 'react-icons/bi'
-import { useLocation } from 'react-router-dom'
+import WholesalerListOptions from '../components/wholesaler-list-options'
+import { useEffect } from 'react'
+import { useAppDispatch } from '../redux/hooks'
+import { filterWholesalersAsync} from '../redux/slices/wholesalers'
 
 const Container = styled.div`
   display: flex;
@@ -23,7 +26,11 @@ const Main = styled.main`
 `
 
 const PanelUser = () => {
-  let location = useLocation()
+  const dispatch = useAppDispatch()
+  useEffect(()=>{    
+    dispatch(filterWholesalersAsync(null))
+  },[])
+
   return (
     <Container>
       <Aside>          
@@ -35,7 +42,7 @@ const PanelUser = () => {
         </ItemAside>
       </Aside>
       <Main>
-
+        <WholesalerListOptions/>
       </Main>
     </Container>
   )
