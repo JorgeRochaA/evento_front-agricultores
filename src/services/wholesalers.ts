@@ -21,13 +21,19 @@ export interface wholesalerResponse {
     username: string;    
 }
 
+export interface response {
+    currentPage: number;
+    mayoristas: any[];
+    totalItems: number;
+    totalPages: number;
+}
 
 export const filterWholesalers = async (data:formValues ) =>{    
     let parameters = createParameters(data)
-    const res = await axios.get<any[]>(`${URL}/api/auth/mayoristfilter?${parameters}`)
+    const res = await axios.get<response>(`${URL}/api/auth/mayoristas/filter?${parameters}`)
     let wholesalers = []
 
-    wholesalers = res.data.map((v) => {
+    wholesalers = res.data.mayoristas.map((v) => {
         return {
             id: v.id,
             name: v.name,    
