@@ -17,7 +17,7 @@ interface wholesalersState {
 const initialState: wholesalersState = {
     wholesalers: [],
     status: 'idle',
-    options: {itemPerPage: 10, sortBy: 'name', isSortLocal: false}
+    options: {itemPerPage: 3, sortBy: 'name', isSortLocal: false}
 }
 
 const joinData = (data:formValues, state:RootState):formValues => {

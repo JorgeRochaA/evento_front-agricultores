@@ -6,6 +6,7 @@ import WholesalerListOptions from '../components/wholesaler-list-options'
 import { useEffect } from 'react'
 import { useAppDispatch } from '../redux/hooks'
 import { filterWholesalersAsync} from '../redux/slices/wholesalers'
+import List from '../components/wholesaler-list'
 
 const Container = styled.div`
   display: flex;
@@ -14,15 +15,19 @@ const Container = styled.div`
   justify-content: space-between;  
   background-color:var(--color9);  
   box-sizing: border-box;
+  overflow-y: scroll;
 `
 const Aside = styled.aside`
   flex: 0 0 8%;
   background-color:#fff;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: .5rem;
+  position: fixed;
+  height: 100%;
 `
 const Main = styled.main`
   flex: 0 0 86%;
+  margin: 0 40px 0 160px;
 `
 
 const PanelUser = () => {
@@ -43,6 +48,7 @@ const PanelUser = () => {
       </Aside>
       <Main>
         <WholesalerListOptions/>
+        <List/>
       </Main>
     </Container>
   )

@@ -7,7 +7,7 @@ export const sortOptions: optionType[] = [
 ]
 
 export const itemOptionsPerPage: optionType[] = [
-    {value : '15', text: 'Mostrar 10'},
-    {value : '20', text: 'Mostrar 20'},
-    {value : '30', text: 'Mostrar 30'}
+    {value : '3', text: 'Mostrar 3'},
+    {value : '6', text: 'Mostrar 6'},
+    {value : '12', text: 'Mostrar 12'}
 ]
