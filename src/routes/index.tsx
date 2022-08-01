@@ -14,7 +14,7 @@ const routes  = () => (
         <Route path="/pruebas" element={<Pruebas/>}/>
         <Route path="/register" element={<UserRegister/>}/>
         <Route path="/panel-user" element={
-            <PrivateRoute><PanelUser/></PrivateRoute>            
+            <PrivateRoute><PanelUser/></PrivateRoute>     
         }/>
         <Route path="*" element={<Page404/>} />
     </Routes>
