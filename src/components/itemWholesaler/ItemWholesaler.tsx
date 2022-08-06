@@ -13,8 +13,7 @@ interface items{
 
 function ItemWholesaler(itemsObj:items) {
 
-    const products: string[] = []
-    products.push(itemsObj.products)
+    const products: string[] = itemsObj.products.split(',')
 
     const handleOnContact = () => {
         if(typeof itemsObj.onContact === 'function'){
