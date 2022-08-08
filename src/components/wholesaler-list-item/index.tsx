@@ -6,10 +6,21 @@ interface items{
     country:string,
     sector:string,
     description:string,
-    products:string[]
+    products:string,
+    onContact?: (name:string)=>void,
 }
 
 function ItemWholesaler(itemsObj:items) {
+
+    const products: string[] = itemsObj.products.split(',')
+
+    const handleOnContact = () => {
+        if(typeof itemsObj.onContact === 'function'){
+            itemsObj.onContact(itemsObj.name)
+        }
+
+    }
+
   return (
     <div className="card-main-container">
         <div className="card-img-container">
@@ -24,14 +35,19 @@ function ItemWholesaler(itemsObj:items) {
             <p className="card-description">{itemsObj.description}</p>
             <p className="card-secondary-container-badges">
                 {
-                    itemsObj.products.map((product,i) =>(
-                        <span key={i} className="card-secondary-badge">{product}</span>
+                    products.map((product,index) =>(
+                        <span
+                            className="card-secondary-badge"
+                            key={index}
+                        >
+                            {product}
+                        </span>
                     ))
                 }
             </p>
         </div>
         <div className="card-btn-container">
-            <button className="card-btn">Contactar ✉</button>
+            <button className="card-btn" onClick={handleOnContact}>Contactar ✉</button>
         </div>
     </div>
   )
