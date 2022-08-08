@@ -1,8 +1,7 @@
 import "./itemWholesalerStyles.css";
 
 interface items{
-    id:number, 
-    image?:string,
+    image:string,
     name:string,
     country:string,
     sector:string,

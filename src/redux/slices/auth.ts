@@ -1,27 +1,40 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { loginUser, formValues, setToken } from '../../services/auth' 
+import { loginUser, setToken, setUserStorage } from '../../services/auth' 
+import { formValues, loginUserResponse } from '../../services/auth/types' 
+import { stateAsync} from '../../types'
+import { AxiosError } from "axios";
+import { errorService } from "../../services/base";
 
-interface user {
-    username: string;
-    token: string
-}
 interface authState {
-    user: user;
-    status: 'idle' |'loading' | 'failed'
+    user: loginUserResponse;
+    status: stateAsync,
+    error: errorService | null
 }
+
+const userEmpty = {username: '', appUserRole: '', email: ''}
 
 const initialState: authState = {
-    user: {username: '', token: ''},
-    status: 'idle'
+    user: userEmpty,
+    status: "idle",
+    error: null
 }
 
 export const loginAsync = createAsyncThunk(
     'auth/login', 
-    async (data: formValues) => {
-        const res = await loginUser(data)
-        setToken("token")
-        return res.data
+    async (data: formValues, {rejectWithValue}) => {
+        try {
+            const res = await loginUser(data)
+            setToken("Autenticado")
+            setUserStorage(res)
+            return res         
+        } catch (error) {
+            const err = error as AxiosError
+            const res = err.response?.data as errorService
+            console.log(res)
+            return rejectWithValue(res)
+        }
+
     }
 )
 
@@ -29,30 +42,36 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        add: (state, action: PayloadAction<user>) => {
+        setUser: (state, action: PayloadAction<loginUserResponse>) => {
             state.user = action.payload
         },
-        remove: (state) => {
-            state.user = {username: '', token: ''}
+        removeUser: (state) => {
+            state.user = userEmpty
         }
     },
     extraReducers: (builder) => {
         builder
             .addCase(loginAsync.pending, (state)=> {
-                state.status = 'loading'
+                state.status = "pending"
             })
             .addCase(loginAsync.fulfilled, (state, action)=> {
-                state.status = 'idle'
+                state.status = "succeeded"
                 state.user = action.payload
             })
-            .addCase(loginAsync.rejected, (state)=> {
+            .addCase(loginAsync.rejected, (state, action)=> {
+                console.log(action)
                 state.status = 'failed'
+                state.error = action.payload as errorService
             })
     }
 })
 
-export const {add, remove} = authSlice.actions
+export const {setUser, removeUser} = authSlice.actions
 
 export const selectUser = (state: RootState) => state.auth.user
+
+export const selectLoading =  (state: RootState) => state.auth.status
+
+export const selectError =  (state: RootState) => state.auth.error?.message
 
 export default authSlice.reducer
