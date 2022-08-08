@@ -7,11 +7,11 @@ import {
   MessageError,
   Input,  
   Error
-} from '../components/form'
+} from '../components/common'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { formValues } from '../services/auth/types'
 import { useNavigate } from 'react-router-dom'
-import useTimer from '../hooks/useTimer'
+import useTimer from '../hooks/useTimerMessage'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaLogin } from '../schemas/auth'
 import { useAppDispatch } from '../redux/hooks'

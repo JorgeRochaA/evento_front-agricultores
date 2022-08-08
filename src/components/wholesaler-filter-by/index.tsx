@@ -1,4 +1,4 @@
-import { CardFilters, Input, Label, ButtonRed} from '../form'
+import { CardFilters, Input, Label, ButtonRed} from '../common'
 import { styleContainterItemLabel } from '../styles/index'
 import { useState } from "react";
 import { property } from '../../types';

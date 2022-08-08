@@ -5,8 +5,8 @@ import {
   Button,
   Error,
   Input  
-} from '../components/form'
-import MessageUser from '../components/form/messageUser'
+} from '../components/common'
+import MessageUser from '../components/common/messageUser'
 import { useState } from 'react'
 import {styleForm} from '../components/styles'
 import {useForm, SubmitHandler} from 'react-hook-form'
@@ -14,15 +14,14 @@ import { registerUser } from '../services/auth'
 import { formValuesRegister } from '../services/auth/types'
 import { yupResolver } from '@hookform/resolvers/yup';
 import {schemaRegister} from '../schemas/auth'
-import useTimer from '../hooks/useTimer'
-import { AxiosError } from 'axios'
-import { errorService } from '../services/base'
-import { messageUser} from '../types'
+import useTimer from '../hooks/useTimerMessage'
+import { formatResponseErrorService } from '../services/base'
+import { messageType, messageUser} from '../types'
 
 const App = () => {  
   const [isLoading, setLoading] = useState<boolean>(false)
   const {showMessage, initTimer, activateShowMessage, disabledShowMessage} = useTimer(2)
-  const [message, setMessage] = useState<messageUser>({message: '', type: 1})
+  const [message, setMessage] = useState<messageUser>({message: '', type: messageType.SUCCEEDED})
 
   const {register, handleSubmit,reset, formState:{errors}} = useForm<formValuesRegister>({
     mode: 'onBlur',
@@ -35,22 +34,21 @@ const App = () => {
       setLoading(true)
       disabledShowMessage()
       let res =  await registerUser(data) 
-      console.log(res)
       setMessage({
         message: `Usuario Creado! Active su usuario mediante su correo ${data.email}`,
-        type: 1
+        type: messageType.SUCCEEDED
       })
       activateShowMessage()
       reset({username: '', password: '', email: ''})
+
     }catch(error){
-      const err = error as AxiosError
-      const res = err.response?.data as errorService
+      const errorResponse = formatResponseErrorService(error)
       setMessage({
-        message: res.message,
-        type: 2
+        message: errorResponse.message,
+        type: messageType.FAILED
       })
       initTimer()
-      console.log("error", error)
+
     }finally{      
       setLoading(false)
     }

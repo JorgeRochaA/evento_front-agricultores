@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button } from '../form'
+import { Button } from '../common'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import { filterWholesalersAsync, reduceOrIncreasePage, selectPaginate } from '../../redux/slices/wholesalers'
 

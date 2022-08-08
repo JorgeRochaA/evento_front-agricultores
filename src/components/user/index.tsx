@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { ImageUser } from "../form";
+import { ImageUser } from "../common";
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
-import { Button } from "../form";
+import { Button } from "../common";
 import { removeTokenAndUser } from "../../services/auth";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
