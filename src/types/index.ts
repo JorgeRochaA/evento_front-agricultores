@@ -2,8 +2,8 @@
 export type stateAsync = 'idle' | 'pending' | 'succeeded' | 'failed';
 
 export enum messageType {
-    FAILED = 'failed',
-    SUCCEEDED = 'succeeded'
+    FAILED,
+    SUCCEEDED
 }
 
 export interface messageUser {

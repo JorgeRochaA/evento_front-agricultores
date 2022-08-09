@@ -1,4 +1,4 @@
-export interface errorService{
+export interface errorService {
     error: string;
     message: string;
     path: string;

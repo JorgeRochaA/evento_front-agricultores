@@ -22,7 +22,9 @@ const styleClose:React.CSSProperties = {
   cursor: 'pointer'
 }
 
-const pruebas = () => {
+ReactModal.setAppElement('#root');
+
+const App = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
   const handleClick = () => { 
@@ -46,4 +48,4 @@ const pruebas = () => {
     </div>;
 };
 
-export default pruebas;
+export default App;
