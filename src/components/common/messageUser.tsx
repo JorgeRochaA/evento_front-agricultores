@@ -16,8 +16,9 @@ interface params {
 }
 
 const App = (params: params):JSX.Element => {
-    let backgroundColor:string = (params.type === messageType.SUCCEEDED) ? "var(--color1)": "var(--colorError)"
+    let backgroundColor:string = (params.type === messageType.SUCCEEDED) ? "var(--color10)": "var(--colorError)"
     let color:string = (params.type === messageType.SUCCEEDED) ? "var(--color2)": "#fff"
+
     const [visible, setVisible] = useState<string>("block")
 
     const handleClose = () => setVisible("none")
