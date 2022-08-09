@@ -28,8 +28,13 @@ export const Body = styled.div`
     width: 100%;
 `
 export const HalfContainer = styled.div`
-    flex: 0 0 50%;
+    flex: 0 0 100%;
     padding: 1rem;
+
+    @media screen and (min-width: 1253px) {
+        flex: 0 0 50%;
+    }
+    
 
 `
 
@@ -54,8 +59,12 @@ export const ProductContainer = styled.div`
 `
 export const ProductList = styled.div`
     display: flex;
+    flex-direction: column;
     gap: 10px;
     margin: .5rem 0;
+    @media screen and (min-width: 1253px) {
+        flex-direction: row;
+    }
 `
 
 

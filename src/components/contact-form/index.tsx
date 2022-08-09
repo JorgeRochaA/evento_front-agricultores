@@ -1,14 +1,15 @@
 import * as Contact from './styled'
 import {Label, Error} from '../common'
+import MessageUser from '../common/messageUser'
 import React, { useEffect, useState } from 'react'
 import account from '../../assets/account.png'
 import ProductButton from './productButton'
 import {response, sendMessage} from '../../services/contact'
 import {useForm, SubmitHandler} from 'react-hook-form'
 import {formValues } from '../../services/contact'
-import { schemaContact } from '../../schemas/contact'
-import { yupResolver } from '@hookform/resolvers/yup';
-import { wholesaler } from '../../types'
+import {schemaContact } from '../../schemas/contact'
+import {yupResolver } from '@hookform/resolvers/yup';
+import {messageType, wholesaler } from '../../types'
 import usePost from '../../hooks/usePost'
 
 const styleClose:React.CSSProperties = {
@@ -36,9 +37,9 @@ interface params {
 
 const App = (params: params):JSX.Element => {
     const [products, setProducts ] = useState<string[]>([])
-    const {loading, init}  = usePost()
-
-    const {register, handleSubmit, reset, formState:{errors}, setValue} = useForm<formValues>({
+    const {loading, init, error, showMessage, type}  = usePost()
+    const [data, setData] = useState<response|null>(null)
+    const {register, handleSubmit, formState:{errors}, setValue} = useForm<formValues>({
         mode: 'onBlur',
         resolver: yupResolver(schemaContact)
     })
@@ -55,21 +56,21 @@ const App = (params: params):JSX.Element => {
         
     }
 
-    const onSubmit: SubmitHandler<formValues>  = async (data) => {
-        console.log(data)
-           
-        try {   
-            const res = await init<response>(() => sendMessage(data))
-
-        } catch (error) {
-            
-        }
+    const onSubmit: SubmitHandler<formValues>  = async (data) => {          
+        const res = await init<response>(() => sendMessage(data))
+        setData(res)
     }
-
 
     return (
         <Contact.CardContact onSubmit={handleSubmit(onSubmit)}>
             <Contact.Title>Formulario de contacto</Contact.Title>
+            {showMessage &&
+             <MessageUser type={type}>
+                <p>
+                    {type === messageType.SUCCEEDED? data?.message : error?.message}
+                </p>
+             </MessageUser>
+            }
             <Contact.Body>
                 <Contact.HalfContainer>
                     <Label>Mayorista</Label>
@@ -103,7 +104,7 @@ const App = (params: params):JSX.Element => {
             </Contact.Body>
             <Contact.Footer>
                 <Contact.SendButton>
-                    Enviar Mensaje
+                    {loading? 'Enviando mensaje ' :'Enviar Mensaje'}
                 </Contact.SendButton>
             </Contact.Footer>
         </Contact.CardContact>
