@@ -1,3 +1,6 @@
+import { AxiosError } from "axios";
+import { errorService } from "./types";
+
 //export const URL:string = "https://agri-commerce.herokuapp.com"
 export const URL:string = "http://localhost:8080"
 
@@ -13,11 +16,9 @@ export const createParameters = (data: object) : string => {
     return (parameters.length > 0)? parameters.substring(1): parameters
 }
 
-
-export interface errorService{
-    error: string;
-    message: string;
-    path: string;
-    status: number;
-    timestamp: string;
+export const formatResponseErrorService = (error: any) => {
+    const err = error as AxiosError
+    const res = err.response?.data as errorService
+    return res
 }
+

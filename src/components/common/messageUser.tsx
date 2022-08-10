@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 import {Message} from './index'
 import {GrFormClose} from 'react-icons/gr'
-
-interface params {
-    children: React.ReactNode;
-    type: number;
-}
+import { messageType } from '../../types';
 
 const styleIconClose: React.CSSProperties = {
     position: "absolute",
@@ -14,9 +10,15 @@ const styleIconClose: React.CSSProperties = {
     cursor: 'pointer'
 }
 
+interface params {
+    children: React.ReactNode;
+    type: messageType;
+}
+
 const App = (params: params):JSX.Element => {
-    let backgroundColor:string = (params.type === 1) ? "var(--color1)": "var(--colorError)"
-    let color:string = (params.type === 1) ? "var(--color2)": "#fff"
+    let backgroundColor:string = (params.type === messageType.SUCCEEDED) ? "var(--color10)": "var(--colorError)"
+    let color:string = (params.type === messageType.SUCCEEDED) ? "var(--color2)": "#fff"
+
     const [visible, setVisible] = useState<string>("block")
 
     const handleClose = () => setVisible("none")
@@ -24,7 +26,7 @@ const App = (params: params):JSX.Element => {
     return (
         <Message style={{backgroundColor, color, position: "relative", display: visible}}>
             {params.children}            
-            {(params.type === 1) &&
+            {(params.type === messageType.SUCCEEDED) &&
                 <GrFormClose 
                     onClick={handleClose} 
                     style={styleIconClose}

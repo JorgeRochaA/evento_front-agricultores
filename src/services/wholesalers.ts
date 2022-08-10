@@ -1,6 +1,6 @@
 import axios from "axios"
-import { itemOptionsPerPage } from "../components/wholesaler-list-options/utils";
 import { URL, createParameters } from './base'
+import { wholesaler } from "../types";
 
 export interface formValues {
     name?: string;
@@ -12,22 +12,9 @@ export interface formValues {
     page: number;
 }
 
-interface user {
-    username: string;
-}
-
-export interface wholesalerResponse {
-    name: string;    
-    description: string;
-    productType: string;
-    sector: string;
-    country: string;
-    appUser: user;    
-}
-
 export interface response {
     currentPage: number;
-    mayoristas: wholesalerResponse[];
+    mayoristas: wholesaler[];
     totalItems: number;
     totalPages: number;
     total: number;
