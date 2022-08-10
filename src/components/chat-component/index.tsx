@@ -97,7 +97,6 @@ const NewTotalMessages = styled.div`
 `;
 
 const ChatComponent = (props: params) => {
-  console.log(props);
   let create_at = `${props.lastMessage?.created_at
     .getHours()
     .toString()}:${props.lastMessage?.created_at.getMinutes().toString()}`;
