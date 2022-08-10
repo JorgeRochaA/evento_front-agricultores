@@ -82,7 +82,7 @@ const HourContainer = styled.div`
 `;
 
 const Hour = styled.div`
-  color: #c5c9d3;
+  color: #878e9f;
 `;
 
 const NewTotalMessages = styled.div`
@@ -99,7 +99,11 @@ const NewTotalMessages = styled.div`
 const ChatComponent = (props: params) => {
   let create_at = `${props.lastMessage?.created_at
     .getHours()
-    .toString()}:${props.lastMessage?.created_at.getMinutes().toString()}`;
+    .toString()
+    .padStart(2, "0")}:${props.lastMessage?.created_at
+    .getMinutes()
+    .toString()
+    .padStart(2, "0")}`;
 
   return (
     <Card onClick={() => props.onOpenChat(props.chatName)}>
