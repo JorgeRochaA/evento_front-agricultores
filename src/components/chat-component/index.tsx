@@ -8,7 +8,7 @@ interface params {
     created_at: Date;
   };
   image: string;
-  newMessagesLength?: number;
+  newMessagesCount?: number;
 }
 
 const Card = styled.div`
@@ -18,7 +18,6 @@ const Card = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border-radius: 2px;
   margin-top: 25px;
   margin-left: 25px;
 `;
