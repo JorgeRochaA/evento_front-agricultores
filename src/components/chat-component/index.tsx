@@ -3,23 +3,25 @@ import styled from "styled-components";
 
 interface params {
   wholesalerName: string;
+  chatName: string;
   lastMessage?: {
     message: string;
     created_at: Date;
   };
-  image: string;
   newMessagesCount?: number;
+  onOpenChat: (chat: string) => void;
 }
 
 const Card = styled.div`
   height: 75px;
   width: 350px;
-  background-color: white;
+  background-color: whitesmoke;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin-top: 25px;
   margin-left: 25px;
+  cursor: pointer;
 `;
 
 const ImageContainer = styled.div`
@@ -32,10 +34,9 @@ const ImageContainer = styled.div`
   position: relative;
 `;
 
-const Image = styled.img`
-  height: 45px;
-  width: 45px;
-  border-radius: 50%;
+const Letter = styled.div`
+  color: whitesmoke;
+  font-size: 1.5rem;
 `;
 
 const Dot = styled.div`
@@ -57,12 +58,21 @@ const WholesalerNameContainer = styled.div`
 const WholesalerName = styled.div`
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 165px;
+  min-width: 165px;
 `;
 
 const LastMessage = styled.div`
   font-family: "Roboto", sans-serif;
   font-size: 600;
   color: #878e9f;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 165px;
 `;
 
 const HourContainer = styled.div`
@@ -87,19 +97,34 @@ const NewTotalMessages = styled.div`
 `;
 
 const ChatComponent = (props: params) => {
+  console.log(props);
+  let create_at = `${props.lastMessage?.created_at
+    .getHours()
+    .toString()}:${props.lastMessage?.created_at.getMinutes().toString()}`;
+
   return (
-    <Card>
-      <ImageContainer>
-        <Image src={props.image} alt="user image" />
+    <Card onClick={() => props.onOpenChat(props.chatName)}>
+      <ImageContainer
+        style={{
+          backgroundColor:
+            "#" +
+            ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0"),
+        }}
+      >
+        <Letter>{props.wholesalerName.charAt(0)}</Letter>
         <Dot className="dot"></Dot>
       </ImageContainer>
       <WholesalerNameContainer>
-        <WholesalerName>Cuwa Mika</WholesalerName>
-        <LastMessage>I hope you get well soon</LastMessage>
+        <WholesalerName>{props.wholesalerName}</WholesalerName>
+        {props.lastMessage?.message && (
+          <LastMessage>{props.lastMessage?.message}</LastMessage>
+        )}
       </WholesalerNameContainer>
       <HourContainer>
-        <Hour>10:30</Hour>
-        <NewTotalMessages>7</NewTotalMessages>
+        {props.lastMessage?.created_at && <Hour>{create_at}</Hour>}
+        {props.newMessagesCount && (
+          <NewTotalMessages>{props.newMessagesCount}</NewTotalMessages>
+        )}
       </HourContainer>
     </Card>
   );
