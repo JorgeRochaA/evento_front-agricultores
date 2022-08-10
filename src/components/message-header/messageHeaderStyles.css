@@ -1,0 +1,39 @@
+.main-container{
+    height: 50px;
+    display: grid;
+    max-width: 500px;
+    color: white;
+    align-items: center;
+    background-color: var(--color2);
+    grid-template-columns: repeat(2,1fr);
+}
+
+.title{
+    padding: 0 0 0 3.2rem;
+}
+
+.secondary-container{
+    display: flex;
+    padding: 0 25px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.input{
+    height: 25px;
+    width: 80px;
+    border: none;
+    padding: 10px;
+    color: black;
+    font-weight: bold;
+    margin: 0 5px 0 0;
+    border-radius: 10px;
+    caret-color: black;
+    outline-color: #fff;
+    transition: width 0.5s;
+    background-color: #eee;
+}
+
+.input:focus{
+    width: 150px;
+}
