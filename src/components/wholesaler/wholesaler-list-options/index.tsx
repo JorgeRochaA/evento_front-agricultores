@@ -8,8 +8,8 @@ import { filterWholesalersAsync,
     selectTotalPages,
     selectTotalWholesaler, 
     setOptionItemPerPage, 
-    setOptionSortBy } from '../../redux/slices/wholesalers'
-import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+    setOptionSortBy } from '../../../redux/slices/wholesalers'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 
 const Container = styled.div`
     display:flex;

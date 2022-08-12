@@ -1,7 +1,7 @@
-import { CardFilters, Input, Label, ButtonRed} from '../common'
-import { styleContainterItemLabel } from '../styles/index'
+import { CardFilters, Input, Label, ButtonRed} from '../../common'
+import { styleContainterItemLabel } from '../../styles/index'
 import { useState } from "react";
-import { property } from '../../types';
+import { property } from '../../../types';
 
 export interface params {
   title: string; 
