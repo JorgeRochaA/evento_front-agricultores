@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useAppSelector } from '../../redux/hooks'
 import { selectIsSortLocal, selectSortWholesalers, selectWholesaler } from '../../redux/slices/wholesalers'
 import { wholesaler } from '../../types'
-import Item from '../wholesaler-list-item'
+import Item from '../wholesaler/wholesaler-list-item'
 import image from '../../assets/wholesaler.jpg'
 
 const Container = styled.div`
@@ -33,7 +33,7 @@ const App = (params:params) => {
                 description={v.description}
                 image={image}
                 name={v.name}
-                products={[v.productType]}
+                products={v.productType}
                 sector={v.sector}
             />)}
         </Container>
