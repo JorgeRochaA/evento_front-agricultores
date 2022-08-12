@@ -15,6 +15,7 @@ const style:Styles = {
     backgroundColor: 'rgba(0, 0, 0, 0.75)'
   }
 }
+
 const styleClose:React.CSSProperties = {
   position: 'absolute',
   top: '1.5rem',
