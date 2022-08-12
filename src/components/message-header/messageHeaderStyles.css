@@ -37,3 +37,28 @@
 .input:focus{
     width: 150px;
 }
+
+.btnClear{
+    width: 25px;
+    border: none;
+    height: 25px;
+    padding: 10px;
+    display: flex;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 50%;
+    text-align: center;
+    align-items: center;
+    outline-color: #fff;
+    justify-content: center;
+    background-color: #eee;
+}
+
+.show{
+    visibility: visible;
+}
+
+.noShow{
+    visibility: hidden;
+}

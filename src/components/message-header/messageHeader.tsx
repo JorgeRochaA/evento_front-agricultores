@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './messageHeaderStyles.css';
 
 interface items{
-    onSearch: (value:string)=>void
+    onSearch?: (value:string)=>void
 }
 
 function MessageHeader(itemsObj:items) {
@@ -15,6 +15,10 @@ function MessageHeader(itemsObj:items) {
             setData('')
         }
     }
+
+    const showBtnClear = () => data.length !== 0 ? true : false
+
+    const clearInput = () =>setData('')
 
     const handleChange = (event:any)=>setData(event.target.value)
 
@@ -32,6 +36,12 @@ function MessageHeader(itemsObj:items) {
                 onChange={handleChange}
                 onKeyPress={(event)=>handleEnterKey(event)}
             />
+            <button
+                className={showBtnClear() ? 'btnClear show' : 'noShow'}
+                onClick={clearInput}
+            >
+                X
+            </button>
         </div>
     </div>
   )
