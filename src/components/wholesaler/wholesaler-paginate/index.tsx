@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button } from '../common'
-import { useAppDispatch, useAppSelector } from '../../redux/hooks'
-import { filterWholesalersAsync, reduceOrIncreasePage, selectPaginate } from '../../redux/slices/wholesalers'
+import { Button } from '../../common'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
+import { filterWholesalersAsync, reduceOrIncreasePage, selectPaginate } from '../../../redux/slices/wholesalers'
 
 const Container = styled.div`
     display:flex;

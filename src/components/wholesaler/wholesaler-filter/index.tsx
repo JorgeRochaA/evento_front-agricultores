@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import FilterBy, {params as paramsFilterBy} from '../wholesaler-filter-by'
-import { formValues } from '../../services/wholesalers'
-import { useAppDispatch } from '../../redux/hooks'
-import { filterWholesalersAsync, setOptionsFilter } from '../../redux/slices/wholesalers'
-import { property } from '../../types'
-import { CardFilters } from '../common'
+import { formValues } from '../../../services/wholesalers'
+import { useAppDispatch } from '../../../redux/hooks'
+import { filterWholesalersAsync, setOptionsFilter } from '../../../redux/slices/wholesalers'
+import { property } from '../../../types'
+import { CardFilters } from '../../common'
 
 const Container = styled.div`
   border-radius: .5rem;
