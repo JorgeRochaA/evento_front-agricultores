@@ -1,3 +1,4 @@
+import { user, wholesaler } from "../../types";
 import "./itemWholesalerStyles.css";
 
 interface items{
@@ -6,17 +7,19 @@ interface items{
     country:string,
     sector:string,
     description:string,
-    products:string,
-    onContact?: (name:string)=>void,
+    productType:string,
+    appUser: user,
+    onContact?: (wholesaler: wholesaler)=>void,
 }
 
 function ItemWholesaler(itemsObj:items) {
 
-    const products: string[] = itemsObj.products.split(',')
+    const products: string[] = itemsObj.productType.split(',')
 
     const handleOnContact = () => {
         if(typeof itemsObj.onContact === 'function'){
-            itemsObj.onContact(itemsObj.name)
+            const {country, description, name, productType, sector, appUser} = itemsObj
+            itemsObj.onContact({country, description, name, productType, sector, appUser })
         }
 
     }

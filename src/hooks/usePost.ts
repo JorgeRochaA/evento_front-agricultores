@@ -20,11 +20,11 @@ const usePost = () => {
         }catch(error) {
             const responseError = formatResponseErrorService(error)   
             setError(responseError)
-            setType(messageType.FAILED)
-            initTimer()
+            setType(messageType.FAILED)            
         }finally{
             setLoading(false)
             activateShowMessage()
+            initTimer()
         }
 
         return response

@@ -18,6 +18,5 @@ export interface response {
 
 export const sendMessage = async (data: formValues) => {
     const res = await axios.post<response>(`${URL}/api/contact-wholesaler`, data)
-    console.log(res)
     return res.data
 }
