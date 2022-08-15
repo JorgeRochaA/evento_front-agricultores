@@ -18,7 +18,7 @@ const App = ():JSX.Element => {
         <ItemAside page='/panel-user' text='Buscar Mayorista' pathname={location.pathname}>
             <BsSearch color='var(--color4)' size="30px"/>
         </ItemAside>
-        <ItemAside page='/message' text='Mensajes' pathname={location.pathname}>
+        <ItemAside page='/panel-message' text='Mensajes' pathname={location.pathname}>
             <BiMessageRoundedDetail color='var(--color4)' size="30px"/>
         </ItemAside>
     </Aside>
