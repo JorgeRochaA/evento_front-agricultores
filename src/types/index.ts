@@ -28,3 +28,13 @@ export interface wholesaler {
     country: string;
     appUser: user;    
 }
+
+export interface chatroom {
+    name: string;
+    lastMessage: message;
+}
+
+export interface message {
+    message: string;
+    createdAt: string;
+}
