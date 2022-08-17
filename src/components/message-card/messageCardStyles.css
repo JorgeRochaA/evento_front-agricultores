@@ -23,7 +23,7 @@
     color: white;
     min-height: 20px;
     align-items: flex-end;
-    background-color: peru;
+    background-color: var(--color6);
     border-radius: 20px 0 0 20px;
 }
 
@@ -34,7 +34,7 @@
     color: white;
     min-height: 20px;
     align-items: flex-end;
-    background-color: #373737;
+    background-color: var(--color3);
     border-radius: 0 20px 20px 0;
 }
 
