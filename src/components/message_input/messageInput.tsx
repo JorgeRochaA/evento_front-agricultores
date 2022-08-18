@@ -1,5 +1,6 @@
-import './messageInputStyles.css'
 import {useState} from 'react';
+import {IoIosSend} from 'react-icons/io';
+import './messageInputStyles.css'
 
 function MessageInput() {
 
@@ -20,7 +21,7 @@ function MessageInput() {
         placeholder='Mensaje...'
         className='input' name="message" value={message} onChange={e => handleChange(e)}/>
         <button type="button" className='btn' onClick={handleSubmit}>
-        <i className="fa-solid fa-paper-plane"></i>
+        <IoIosSend/>
         </button>
     </div>
   )
