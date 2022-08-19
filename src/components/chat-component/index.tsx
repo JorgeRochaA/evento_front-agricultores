@@ -93,17 +93,15 @@ const NewTotalMessages = styled.div`
 `;
 
 const ChatComponent = (props: params) => {
-  // const dateS = (Date) props.lastMessage?.createdAt;
-  // console.log(props.lastMessage?.createdAt.getUTCHours());
-  // let create_at = `${props.lastMessage?.createdAt
-  //   .getHours()
-  //   .toString()
-  //   .padStart(2, "0")}:${props.lastMessage?.createdAt
-  //   .getMinutes()
-  //   .toString()
-  //   .padStart(2, "0")}`;
-  let created_at = "11:55";
-
+  let created_at;
+  if (props.lastMessage?.createdAt) {
+    const date = new Date(props.lastMessage.createdAt);
+    const hour = date.getHours() % 12 || 12;
+    created_at = `${hour.toString().padStart(2, "0")}:${date
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
+  }
   return (
     <Card onClick={() => props.onOpenChat(props.chat)}>
       <ImageContainer
