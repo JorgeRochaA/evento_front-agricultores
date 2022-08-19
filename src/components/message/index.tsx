@@ -1,13 +1,15 @@
-import React from 'react'
 import styled from 'styled-components'
+import Header from './message-header'
 
 const Container = styled.div`
-    grid-area: message;
+    grid-area: messages;
 `
 
 const App = () => {
   return (
-    <Container>Chat</Container>
+    <Container>
+      <Header name='Usuario'/>
+    </Container>
   )
 }
 
