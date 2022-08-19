@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import MessageInput from '../message_input/messageInput'
 
 const Container = styled.div`
     grid-area: message;
@@ -7,7 +8,9 @@ const Container = styled.div`
 
 const App = () => {
   return (
-    <Container>Chat</Container>
+    <Container>
+      <MessageInput/>
+    </Container>
   )
 }
 
