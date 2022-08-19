@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import MessageInput from '../message_input/messageInput'
 import Header from './message-header'
 
 const Container = styled.div`
@@ -7,8 +8,9 @@ const Container = styled.div`
 
 const App = () => {
   return (
-    <Container>
+    <Container>     
       <Header name='Usuario'/>
+      <MessageInput/>
     </Container>
   )
 }
