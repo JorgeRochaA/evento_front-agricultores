@@ -11,8 +11,10 @@ function MessageHeader(itemsObj:items) {
 
     const handleEnterKey = (event:any) => {
         if(event.key === "Enter"){
-            //LOGICA PARA BUSCAR
-            setData('')
+            //LOGICA PARA BUSCAR            
+            
+            if(typeof itemsObj.onSearch === 'function') itemsObj.onSearch(data)
+
         }
     }
 
@@ -20,7 +22,10 @@ function MessageHeader(itemsObj:items) {
 
     const clearInput = () =>setData('')
 
-    const handleChange = (event:any)=>setData(event.target.value)
+    const handleChange = (event:any)=>{
+        setData(event.target.value)
+        if(typeof itemsObj.onSearch === 'function') itemsObj.onSearch(event.target.value)
+    }
 
   return (
     <div className='main-container test'>
