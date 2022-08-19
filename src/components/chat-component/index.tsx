@@ -6,6 +6,7 @@ interface params extends chatroom {
   chat: string;
   newMessagesCount?: number;
   onOpenChat: (chat: string) => void;
+  bg_color: string;
 }
 
 const Card = styled.div`
@@ -107,9 +108,7 @@ const ChatComponent = (props: params) => {
     <Card onClick={() => props.onOpenChat(props.chat)}>
       <ImageContainer
         style={{
-          backgroundColor:
-            "#" +
-            ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0"),
+          backgroundColor: props.bg_color,
         }}
       >
         <Letter>{props.name.charAt(0)}</Letter>

@@ -6,6 +6,10 @@ import { getChatsByUser } from "../../services/chat";
 import { chatroom } from "../../types";
 import { selectUser } from "../../redux/slices/auth";
 import { useAppSelector } from "../../redux/hooks";
+
+interface chats extends chatroom {
+  bg_color: string;
+}
 const Container = styled.div`
   grid-area: chats;
   height: 100%;
@@ -29,14 +33,25 @@ const Container = styled.div`
 
 const App = () => {
   const user = useAppSelector(selectUser);
-  const [chats, setChats] = useState<chatroom[]>([]);
-  const [filteredChats, setFilteredChats] = useState<chatroom[]>([]);
+  const [chats, setChats] = useState<chats[]>([]);
+  const [filteredChats, setFilteredChats] = useState<chats[]>([]);
   const [nameFilter, setNameFilter] = useState("");
+
+  const getRandomColor = () => {
+    return (
+      "#" + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0")
+    );
+  };
 
   useEffect(() => {
     getChatsByUser(user.username).then((res) => {
-      setChats(res);
-      setFilteredChats(res);
+      let chatsBg: chats[] = [];
+      res.forEach((chat) => {
+        let newChat = Object.assign({}, chat, { bg_color: getRandomColor() });
+        chatsBg.push(newChat);
+      });
+      setChats(chatsBg);
+      setFilteredChats(chatsBg);
     });
   }, []);
 

@@ -4,6 +4,7 @@ import { chatroom } from "../../types";
 
 interface chats extends chatroom {
   newMessagesCount?: number;
+  bg_color: string;
 }
 
 interface params {
@@ -40,6 +41,7 @@ const ChatListComponent = (params: params) => {
         }}
         newMessagesCount={chat.newMessagesCount}
         lastMessage={chat.lastMessage}
+        bg_color={chat.bg_color}
       />
     );
   });
