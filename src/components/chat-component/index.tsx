@@ -1,27 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import { chatroom } from "../../types";
 
-interface params {
-  wholesalerName: string;
-  chatName: string;
-  lastMessage?: {
-    message: string;
-    created_at: Date;
-  };
+interface params extends chatroom {
+  chat: string;
   newMessagesCount?: number;
   onOpenChat: (chat: string) => void;
+  bg_color: string;
 }
 
 const Card = styled.div`
   height: 75px;
-  width: 350px;
+  width: 375px;
   background-color: whitesmoke;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 25px;
-  margin-left: 25px;
   cursor: pointer;
+  border: 1px solid #e8e8e8;
 `;
 
 const ImageContainer = styled.div`
@@ -50,12 +46,12 @@ const Dot = styled.div`
   border: 3px solid white;
 `;
 
-const WholesalerNameContainer = styled.div`
+const NameContainer = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 `;
 
-const WholesalerName = styled.div`
+const Name = styled.div`
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 600;
   overflow: hidden;
@@ -97,34 +93,33 @@ const NewTotalMessages = styled.div`
 `;
 
 const ChatComponent = (props: params) => {
-  let create_at = `${props.lastMessage?.created_at
-    .getHours()
-    .toString()
-    .padStart(2, "0")}:${props.lastMessage?.created_at
-    .getMinutes()
-    .toString()
-    .padStart(2, "0")}`;
-
+  let created_at;
+  if (props.lastMessage?.createdAt) {
+    const date = new Date(props.lastMessage.createdAt);
+    const hour = date.getHours() % 12 || 12;
+    created_at = `${hour.toString().padStart(2, "0")}:${date
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
+  }
   return (
-    <Card onClick={() => props.onOpenChat(props.chatName)}>
+    <Card onClick={() => props.onOpenChat(props.chat)}>
       <ImageContainer
         style={{
-          backgroundColor:
-            "#" +
-            ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0"),
+          backgroundColor: props.bg_color,
         }}
       >
-        <Letter>{props.wholesalerName.charAt(0)}</Letter>
+        <Letter>{props.name.charAt(0)}</Letter>
         <Dot className="dot"></Dot>
       </ImageContainer>
-      <WholesalerNameContainer>
-        <WholesalerName>{props.wholesalerName}</WholesalerName>
+      <NameContainer>
+        <Name>{props.name}</Name>
         {props.lastMessage?.message && (
           <LastMessage>{props.lastMessage?.message}</LastMessage>
         )}
-      </WholesalerNameContainer>
+      </NameContainer>
       <HourContainer>
-        {props.lastMessage?.created_at && <Hour>{create_at}</Hour>}
+        {props.lastMessage?.createdAt && <Hour>{created_at}</Hour>}
         {props.newMessagesCount && (
           <NewTotalMessages>{props.newMessagesCount}</NewTotalMessages>
         )}

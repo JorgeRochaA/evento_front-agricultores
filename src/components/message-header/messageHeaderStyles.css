@@ -1,64 +1,67 @@
-.main-container{
-    height: 50px;
-    display: grid;
-    max-width: 500px;
-    color: white;
-    align-items: center;
-    background-color: var(--color2);
-    grid-template-columns: repeat(2,1fr);
+.main-container {
+  height: 50px;
+  display: grid;
+  max-width: 375px;
+  color: white;
+  align-items: center;
+  background-color: var(--color2);
+  grid-template-columns: repeat(2, 1fr);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.title{
-    padding: 0 0 0 3.2rem;
+.title {
+  padding: 0 0 0 3.2rem;
 }
 
-.secondary-container{
-    display: flex;
-    padding: 0 25px;
-    align-items: center;
-    justify-content: flex-end;
+.secondary-container {
+  display: flex;
+  padding: 0 25px;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-.input{
-    height: 25px;
-    width: 80px;
-    border: none;
-    padding: 10px;
-    color: black;
-    font-weight: bold;
-    margin: 0 5px 0 0;
-    border-radius: 10px;
-    caret-color: black;
-    outline-color: #fff;
-    transition: width 0.5s;
-    background-color: #eee;
+.input {
+  height: 25px;
+  width: 80px;
+  border: none;
+  padding: 10px;
+  color: black;
+  font-weight: bold;
+  margin: 0 5px 0 0;
+  border-radius: 10px;
+  caret-color: black;
+  outline-color: #fff;
+  transition: width 0.5s;
+  background-color: #eee;
 }
 
-.input:focus{
-    width: 150px;
+.input:focus {
+  width: 150px;
 }
 
-.btnClear{
-    width: 25px;
-    border: none;
-    height: 25px;
-    padding: 10px;
-    display: flex;
-    color: black;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 50%;
-    text-align: center;
-    align-items: center;
-    outline-color: #fff;
-    justify-content: center;
-    background-color: #eee;
+.btnClear {
+  width: 25px;
+  border: none;
+  height: 25px;
+  padding: 10px;
+  display: flex;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 50%;
+  text-align: center;
+  align-items: center;
+  outline-color: #fff;
+  justify-content: center;
+  background-color: #eee;
 }
 
-.show{
-    visibility: visible;
+.show {
+  visibility: visible;
 }
 
-.noShow{
-    visibility: hidden;
+.noShow {
+  visibility: hidden;
 }
