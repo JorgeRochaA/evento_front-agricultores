@@ -35,5 +35,5 @@ export interface chatroom {
 
 export interface message {
   message: string;
-  createdAt: Date;
+  createdAt: string;
 }

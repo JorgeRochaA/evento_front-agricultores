@@ -1,5 +1,4 @@
 import { BrowserRouter } from 'react-router-dom'
-import './App.css'
 import Navbar from './pages/layout/header'
 import { useAppDispatch } from './redux/hooks'
 import { setUser } from './redux/slices/auth'

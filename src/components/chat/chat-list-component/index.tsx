@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ChatComponent from "../chat-component/index";
-import { chatroom } from "../../types";
+import { chatroom } from "../../../types";
 
 interface chats extends chatroom {
   newMessagesCount?: number;
@@ -13,11 +13,12 @@ interface params {
 
 const Container = styled.div`
   height: auto;
-  width: 375px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  position: relative;
 `;
 
 const Message = styled.h2`

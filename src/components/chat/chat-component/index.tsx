@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { chatroom } from "../../types";
+import { chatroom } from "../../../types";
 
 interface params extends chatroom {
   chat: string;
@@ -11,7 +11,7 @@ interface params extends chatroom {
 
 const Card = styled.div`
   height: 75px;
-  width: 375px;
+  width: 100%;
   background-color: whitesmoke;
   display: flex;
   justify-content: space-evenly;

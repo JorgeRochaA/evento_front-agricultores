@@ -14,10 +14,9 @@ const Container = styled.div`
 `;
 
 const Main = styled.main`
-  flex: 0 0 86%;
+  width: 100%;
   margin-left: 125px;
-  display: grid;
-  grid-template-areas: "chats messages";
+  display: flex;
 `;
 
 const MessagePanel = () => {

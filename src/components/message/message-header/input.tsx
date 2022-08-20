@@ -1,5 +1,5 @@
 import { useState } from "react"
-import  '../../message-header/messageHeaderStyles.css'
+import  '../../chat/chat-header/messageHeaderStyles.css'
 
 interface params {
     onSearch?: (value:string)=>void;
@@ -34,6 +34,7 @@ const input = (params: params):JSX.Element => {
                 autoComplete="off"
                 onChange={handleChange}
                 onKeyPress={(event)=>handleEnterKey(event)}
+                style={{height: 'initial'}}
             />
                 <button
                     className={showBtnClear() ? 'btnClear show' : 'noShow'}

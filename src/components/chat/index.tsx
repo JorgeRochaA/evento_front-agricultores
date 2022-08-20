@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import ChatListComponent from "../chat-list-component/index";
-import MessageHeader from "../message-header/messageHeader";
+import ChatListComponent from "./chat-list-component/index";
+import ChatHeader from "./chat-header";
 import { getChatsByUser } from "../../services/chat";
 import { chatroom } from "../../types";
 import { selectUser } from "../../redux/slices/auth";
@@ -11,9 +11,8 @@ interface chats extends chatroom {
   bg_color: string;
 }
 const Container = styled.div`
-  grid-area: chats;
+  flex: 0 0 50%;
   height: 100%;
-  max-width: 375px;
   overflow-y: scroll;
   overflow-x: hidden;
   border-right: 1px solid #e8e8e8;
@@ -72,7 +71,7 @@ const App = () => {
 
   return (
     <Container>
-      <MessageHeader onSearch={onSearch} />
+      <ChatHeader onSearch={onSearch} />
       <ChatListComponent chats={filteredChats} />
     </Container>
   );

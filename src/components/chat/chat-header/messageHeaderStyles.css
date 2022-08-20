@@ -1,7 +1,7 @@
 .main-container {
   height: 50px;
   display: grid;
-  max-width: 375px;
+  width: 100%;
   color: white;
   align-items: center;
   background-color: var(--color2);

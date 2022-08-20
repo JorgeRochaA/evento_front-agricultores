@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Container = styled.nav`
-  height: 70px;
+export const Container = styled.header`
+  height: 9vh;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -49,7 +49,7 @@ export const Logo = styled.img`
   margin-top: 6px;
 `;
 
-export const ItemContainer = styled.div`
+export const ItemContainer = styled.nav`
   position: absolute;
   top: 70px;
   left: -100%;
