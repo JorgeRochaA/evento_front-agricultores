@@ -1,0 +1,45 @@
+.main-container{
+    display: flex;
+    margin: 2px 0;
+    max-width: 75%;
+}
+
+.text-container{
+    margin: 5px 0;
+}
+
+.text-container:first-child > .text-sent{
+    border-top-right-radius: 20px;
+}
+
+.text-container:first-child > .text-received{
+    border-bottom-left-radius: 20px;
+}
+
+.text-sent{
+    margin: 0;
+    display: flex;
+    padding: 10px;
+    color: white;
+    min-height: 20px;
+    align-items: flex-end;
+    background-color: var(--color6);
+    border-radius: 20px 0 0 20px;
+}
+
+.text-received{
+    margin: 0;
+    display: flex;
+    padding: 10px;
+    color: white;
+    min-height: 20px;
+    align-items: flex-end;
+    background-color: var(--color3);
+    border-radius: 0 20px 20px 0;
+}
+
+.time{
+    margin: 0 10px;
+    font-size: 10px;
+    font-weight: bold;
+}

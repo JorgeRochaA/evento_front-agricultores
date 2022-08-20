@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Aside from "./layout/aside";
 import Chat from "../components/chat/index";
+import Message from '../components/message'
+
 const Container = styled.div`
   display: flex;
   width: 100%;
@@ -24,6 +26,7 @@ const MessagePanel = () => {
       <Aside />
       <Main>
         <Chat />
+        <Message/>
       </Main>
     </Container>
   );
