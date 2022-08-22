@@ -34,5 +34,52 @@
         "createdAt": "2022-08-15T01:52:48.983Z"
       }
     }
+  ],
+  "messagesChat": [
+    {
+      "message": "hola agricultor",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "mayorista1"
+    },
+    {
+      "message": "hola mayorista",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "agricultor"
+    },
+    {
+      "message": "hola 1",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "mayorista1"
+    },
+    {
+      "message": " Buenos días este saludo se usa hasta las horas antes del mediodía. Buenas noches se usa a partir de las 6 de la tarde",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "agricultor"
+    },
+    {
+      "message": "hola mayorista",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "agricultor"
+    },
+    {
+      "message": "hola 1",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "mayorista1"
+    },
+    {
+      "message": " Buenos días este saludo se usa hasta las horas antes del mediodía. Buenas noches se usa a partir de las 6 de la tarde",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "agricultor"
+    },
+    {
+      "message": "hola mayorista",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "agricultor"
+    },
+    {
+      "message": "hola 1",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "mayorista1"
+    }
   ]
 }
