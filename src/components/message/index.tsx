@@ -1,18 +1,25 @@
-import styled from 'styled-components'
-import MessageInput from './message_input/messageInput'
-import Header from './message-header'
+import styled from "styled-components";
+import MessageInput from "./message_input";
+import Header from "./message-header";
+import MessageList from "./message-list";
+import { message } from "../../types";
+import {messagesChat} from '../../services/data.json'
+import { useState } from "react";
 
 const Container = styled.div`
-    flex: 0 0 50%;
-`
+	flex: 0 0 50%;
+`;
 
 const App = () => {
-  return (
-    <Container>     
-      <Header name='Usuario'/>
-      <MessageInput/>
-    </Container>
-  )
-}
+	const [messages, setMessages]  = useState<message[]>(messagesChat);
 
-export default App
+	return (
+		<Container>
+			<Header name="Usuario" />
+			<MessageList messages={messages} username={"agricultor"} />
+			<MessageInput />
+		</Container>
+	);
+};
+
+export default App;
