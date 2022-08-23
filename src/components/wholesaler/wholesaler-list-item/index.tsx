@@ -1,14 +1,8 @@
-import { user, wholesaler } from "../../types";
+import { user, wholesaler } from "../../../types/index";
 import "./itemWholesalerStyles.css";
 
-interface items{
+interface items extends wholesaler{
     image:string,
-    name:string,
-    country:string,
-    sector:string,
-    description:string,
-    productType:string,
-    appUser: user,
     onContact?: (wholesaler: wholesaler)=>void,
 }
 
@@ -18,8 +12,8 @@ function ItemWholesaler(itemsObj:items) {
 
     const handleOnContact = () => {
         if(typeof itemsObj.onContact === 'function'){
-            const {country, description, name, productType, sector, appUser} = itemsObj
-            itemsObj.onContact({country, description, name, productType, sector, appUser })
+            const {image, onContact, ...data} = itemsObj
+            itemsObj.onContact(data)
         }
 
     }

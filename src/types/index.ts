@@ -25,7 +25,7 @@ export interface wholesaler {
   productType: string;
   sector: string;
   country: string;
-  appUser: user;
+  username: string;
 }
 
 export interface chatroom {

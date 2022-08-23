@@ -52,6 +52,7 @@ const App = (params:params) => {
     const [showModal, setShowModal] = useState<boolean>(false)
     const [wholesalerSelect, setWholesalerSelect] = useState<wholesaler>()
     
+    
     wholesalers = isSortLocal? wholesalerSort: wholesalersState
 
     const handleClose = () => {
@@ -62,22 +63,15 @@ const App = (params:params) => {
         setWholesalerSelect(wholesaler)
         setShowModal(true)
     }
-
     return (
         <Container style={params.style}>
-            <ReactModal 
-                isOpen={showModal} 
-                style={style}
-                >
+            <ReactModal isOpen={showModal} style={style}>
                 <GrFormClose style={styleClose} size='1.5rem' onClick={handleClose}/>
                 <Contact userWholesaler={wholesalerSelect} userFarmer={userCurrent.username}/>
             </ReactModal>
-            {wholesalers.map((v, i) => <Item
-                key={i}
-                image={image}
-                onContact={handleContact}
-                {...v}
-            />)}
+            {
+                wholesalers.map((v, i) => <Item key={i} image={image} onContact={handleContact}{...v} />)
+            }
         </Container>
     )
 }
