@@ -1,6 +1,6 @@
 import axios from "axios"
 import {chats} from './data.json'
-import { chatroom } from "../types"
+import { chatroom, message } from "../types"
 import { URL as local} from './base'
 
 const URL = false ? 
@@ -16,4 +16,11 @@ export const getChatsByUser = async (username: string) => {
     //return res.data as chatroom[]
     
     return chats
+}
+
+export const getMessagesByChatroom = async(chatroom: number) =>{
+
+    const res = await axios.get<message[]>(`${URL}/chatrooms/${chatroom}/chatmessages`)
+    
+    return res.data
 }
