@@ -14,6 +14,7 @@ const ImageContainer = styled.div`
 const Letter = styled.div`
   color: whitesmoke;
   font-size: 1.5rem;
+  text-transform: uppercase;
 `;
 
 const Dot = styled.div`
