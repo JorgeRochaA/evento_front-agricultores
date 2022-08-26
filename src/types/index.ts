@@ -29,7 +29,10 @@ export interface wholesaler {
 }
 
 export interface chatroom {
-  name: string;
+  id : number;
+  name?: string;
+  receiver?: string;
+  emisor?: string;
   lastMessage?: message;
 }
 
@@ -38,4 +41,11 @@ export interface message {
   textMessage: string;
   created_at: string;
   emisor?: string;
+}
+
+export interface lastMessage {
+  chatRoomId: number,
+  emisor: string,
+  textMessage: string,
+  created_at: string    
 }

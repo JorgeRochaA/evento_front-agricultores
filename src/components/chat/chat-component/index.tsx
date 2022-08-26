@@ -1,131 +1,157 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { chatroom } from "../../../types";
+import { getLastMessageByChat } from "../../../services/chat";
+import { chatroom, lastMessage } from "../../../types";
 
 interface params extends chatroom {
-  chat: string;
-  newMessagesCount?: number;
-  onOpenChat: (chat: string) => void;
-  bg_color: string;
+	chat: string;
+	newMessagesCount?: number;
+	onOpenChat: (chat: string) => void;
+	bg_color: string;
 }
 
 const Card = styled.div`
-  height: 75px;
-  width: 100%;
-  background-color: whitesmoke;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  cursor: pointer;
-  border: 1px solid #e8e8e8;
+	height: 75px;
+	width: 100%;
+	background-color: whitesmoke;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	cursor: pointer;
+	border: 1px solid #e8e8e8;
 `;
 
 const ImageContainer = styled.div`
-  height: 45px;
-  width: 45px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+	height: 45px;
+	width: 45px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
 `;
 
 const Letter = styled.div`
-  color: whitesmoke;
-  font-size: 1.5rem;
+	color: whitesmoke;
+	font-size: 1.5rem;
+	text-transform: uppercase;
 `;
 
 const Dot = styled.div`
-  height: 15px;
-  width: 15px;
-  background-color: #47b4ac;
-  position: absolute;
-  border-radius: 50%;
-  bottom: 1px;
-  left: 30px;
-  border: 3px solid white;
+	height: 15px;
+	width: 15px;
+	background-color: #47b4ac;
+	position: absolute;
+	border-radius: 50%;
+	bottom: 1px;
+	left: 30px;
+	border: 3px solid white;
 `;
 
 const NameContainer = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+	@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+	@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 `;
 
 const Name = styled.div`
-  font-family: "Noto Sans JP", sans-serif;
-  font-weight: 600;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 165px;
-  min-width: 165px;
+	font-family: "Noto Sans JP", sans-serif;
+	font-weight: 600;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	max-width: 165px;
+	min-width: 165px;
 `;
 
 const LastMessage = styled.div`
-  font-family: "Roboto", sans-serif;
-  font-size: 600;
-  color: #878e9f;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 165px;
+	font-family: "Roboto", sans-serif;
+	font-size: 600;
+	color: #878e9f;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	max-width: 165px;
 `;
 
 const HourContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 `;
 
 const Hour = styled.div`
-  color: #878e9f;
+	color: #878e9f;
 `;
 
 const NewTotalMessages = styled.div`
-  height: 21px;
-  width: 21px;
-  background-color: #44aaa7;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  color: white;
-  font-size: 13px;
+	height: 21px;
+	width: 21px;
+	background-color: #44aaa7;
+	display: grid;
+	place-items: center;
+	border-radius: 50%;
+	color: white;
+	font-size: 13px;
 `;
 
 const ChatComponent = (props: params) => {
-  let created_at;
-  if (props.lastMessage?.createdAt) {
-    const date = new Date(props.lastMessage.createdAt);
-    const hour = date.getHours() % 12 || 12;
-    created_at = `${hour.toString().padStart(2, "0")}:${date
-      .getMinutes()
-      .toString()
-      .padStart(2, "0")}`;
-  }
-  return (
-    <Card onClick={() => props.onOpenChat(props.chat)}>
-      <ImageContainer
-        style={{
-          backgroundColor: props.bg_color,
-        }}
-      >
-        <Letter>{props.name.charAt(0)}</Letter>
-        <Dot className="dot"></Dot>
-      </ImageContainer>
-      <NameContainer>
-        <Name>{props.name}</Name>
-        {props.lastMessage?.message && (
-          <LastMessage>{props.lastMessage?.message}</LastMessage>
-        )}
-      </NameContainer>
-      <HourContainer>
-        {props.lastMessage?.createdAt && <Hour>{created_at}</Hour>}
-        {props.newMessagesCount && (
-          <NewTotalMessages>{props.newMessagesCount}</NewTotalMessages>
-        )}
-      </HourContainer>
-    </Card>
-  );
+	const [lastMessage, setLastMessage] = useState<{
+		message: string;
+		created_at: any;
+	}>();
+
+	const createCreatedAt = (created_at: string): string => {
+		const date = new Date(created_at);
+		const hour = date.getHours() % 12 || 12;
+		return `${hour.toString().padStart(2, "0")}:${date
+			.getMinutes()
+			.toString()
+			.padStart(2, "0")}`;
+	};
+
+	useEffect(() => {
+		if (props.lastMessage) {
+			setLastMessage({
+				message: props.lastMessage.message,
+				created_at: createCreatedAt(props.lastMessage.createdAt),
+			});
+		} else {
+			getLastMessageByChat(props.id).then((res) => {
+				if (res.length > 0) {
+					const message = res[0];
+					setLastMessage({
+						message: message.textMessage,
+						created_at: createCreatedAt(message.created_at),
+					});
+				}
+			});
+		}
+	}, []);
+
+	return (
+		<Card onClick={() => props.onOpenChat(props.chat)}>
+			<ImageContainer style={{ backgroundColor: props.bg_color }}>
+				<Letter>{props.name?.charAt(0)}</Letter>
+				<Dot className="dot" />
+			</ImageContainer>
+			<NameContainer>
+				<Name>{props.name}</Name>
+				{lastMessage?.message && (
+					<LastMessage>{lastMessage.message}</LastMessage>
+				)}
+			</NameContainer>
+			<HourContainer>
+				{lastMessage?.created_at && (
+					<Hour>{lastMessage.created_at}</Hour>
+				)}
+				{props.newMessagesCount && (
+					<NewTotalMessages>
+						{props.newMessagesCount}
+					</NewTotalMessages>
+				)}
+			</HourContainer>
+		</Card>
+	);
 };
 
 export default ChatComponent;
