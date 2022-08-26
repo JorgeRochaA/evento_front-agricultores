@@ -34,7 +34,8 @@ export interface chatroom {
 }
 
 export interface message {
-  message: string;
-  createdAt: string;
-  sender?: string;
+  chatRoomId?: number;
+  textMessage: string;
+  created_at: string;
+  emisor?: string;
 }
