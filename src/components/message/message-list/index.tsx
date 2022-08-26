@@ -30,8 +30,7 @@ export interface params {
 
 const App = (params: params): JSX.Element =>{
 
-    const isUserMessage = (sender:message["sender"]) =>  {
-
+    const isUserMessage = (sender:message["emisor"]) =>  {
         return sender? params.username === sender : false
     }
 
@@ -42,8 +41,9 @@ const App = (params: params): JSX.Element =>{
                     params.messages.map((v, i) => 
                         <MessageCard 
                             key={i} 
-                            isTextSent={isUserMessage(v.sender)}
-                            message={v.message}
+                            isTextSent={isUserMessage(v.emisor)}
+                            message={v.textMessage}
+                            created_at={v.created_at}
                         />
                     )
                 }

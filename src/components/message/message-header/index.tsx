@@ -42,6 +42,7 @@ const InfoContainer = styled(OptionsContainer)`
 interface params {
   name: string;
   state: string;
+  onClose?: () => void;
 }
 
 const App = (params: params) => {
@@ -50,7 +51,7 @@ const App = (params: params) => {
   }
 
   const handleClose = () => {
-    
+    if(typeof params.onClose === 'function') params.onClose()
   }
 
   return (

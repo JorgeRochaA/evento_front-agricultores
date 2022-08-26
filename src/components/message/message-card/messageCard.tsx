@@ -3,10 +3,11 @@ import './messageCardStyles.css';
 export interface params {
   message: string,
   isTextSent: boolean
+  created_at: string
 }
 
 function MessageCard(params: params) {
-  const time = new Date()
+  const time = new Date(params.created_at)
   let className = 'message-container'
 
   if(params.isTextSent) className += ' message-sent'
