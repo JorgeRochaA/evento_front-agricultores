@@ -8,7 +8,9 @@ export interface formValues {
   textMessage: string;
 }
 
+export interface response extends formValues {}
+
 export const createMessage = async (message: formValues) => {
-  const res = await axios.post<formValues>(`${URL}/chatmessages`, message);
-  return res.data as formValues;
+  const res = await axios.post<response>(`${URL}/chatmessages`, message);
+  return res.data;
 };
