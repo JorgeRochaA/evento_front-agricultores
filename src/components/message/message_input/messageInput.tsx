@@ -1,18 +1,21 @@
 import "./messageInputStyles.css";
 import { createMessage } from "../../../services/messages";
-import { formValues } from "../../../services/messages";
+import { response, formValues } from "../../../services/messages";
 import { IoIosSend } from "react-icons/io";
 import { MessageError } from "../../common/index";
 import { schemaMessage } from "../../../schemas/message";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
+import ReactLoading from "react-loading";
+import usePost from "../../../hooks/usePost";
 interface props {
   chat: number;
   onNewMessage: (message: formValues) => void;
   sender: string;
 }
 const MessageInput = (props: props) => {
+  const { loading, init, error } = usePost();
   const [message, setMessage] = useState("");
 
   const handleChange = (e: any): void => {
@@ -28,21 +31,19 @@ const MessageInput = (props: props) => {
     resolver: yupResolver(schemaMessage),
   });
 
-  const onSubmit: SubmitHandler<formValues> = () => {
+  const onSubmit: SubmitHandler<formValues> = async () => {
     let newMessage: formValues = {
-      chatRoomId: props.chat,
+      chatRoomId: 1,
       created_at: new Date().toISOString(),
       emisor: props.sender,
       textMessage: message,
     };
-    createMessage(newMessage)
-      .then((result) => {
-        setMessage("");
-        props.onNewMessage(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const res = await init<response>(() => createMessage(newMessage));
+
+    if (res) {
+      setMessage("");
+      props.onNewMessage(res);
+    }
   };
 
   return (
@@ -55,20 +56,42 @@ const MessageInput = (props: props) => {
         width: "45%",
       }}
     >
-      <MessageError
-        style={{
-          height: "20px",
-          width: "260px",
-          display: "flex",
-          justifyContent: "start",
-          alignItems: "center",
-          fontSize: "12px",
-          backgroundColor: "transparent",
-          color: "red",
-        }}
-      >
-        {errors.textMessage && errors.textMessage.message}
-      </MessageError>
+      {errors.textMessage ? (
+        <MessageError
+          style={{
+            height: "20px",
+            width: "260px",
+            display: "flex",
+            justifyContent: "start",
+            alignItems: "center",
+            fontSize: "12px",
+            backgroundColor: "transparent",
+            color: "red",
+          }}
+        >
+          {errors.textMessage && errors.textMessage.message}
+        </MessageError>
+      ) : (
+        ""
+      )}
+      {error ? (
+        <MessageError
+          style={{
+            height: "20px",
+            width: "260px",
+            display: "flex",
+            justifyContent: "start",
+            alignItems: "center",
+            fontSize: "12px",
+            backgroundColor: "transparent",
+            color: "red",
+          }}
+        >
+          mensaje no enviado
+        </MessageError>
+      ) : (
+        ""
+      )}
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
@@ -79,7 +102,17 @@ const MessageInput = (props: props) => {
           onChange={(e) => handleChange(e)}
         />
         <button type="submit" className="btn">
-          <IoIosSend />
+          {loading ? (
+            <ReactLoading
+              className="loader"
+              type={"spin"}
+              height={"70%"}
+              width={"70%"}
+              color="#fff"
+            />
+          ) : (
+            <IoIosSend />
+          )}
         </button>
       </form>
     </div>
