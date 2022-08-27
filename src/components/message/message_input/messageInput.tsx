@@ -9,7 +9,7 @@ import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 interface props {
   chat: number;
-  onNewMessage: () => void;
+  onNewMessage: (message: formValues) => void;
   sender: string;
 }
 const MessageInput = (props: props) => {
@@ -38,8 +38,7 @@ const MessageInput = (props: props) => {
     createMessage(newMessage)
       .then((result) => {
         setMessage("");
-        props.onNewMessage();
-        console.log(result);
+        props.onNewMessage(result);
       })
       .catch((err) => {
         console.log(err);
