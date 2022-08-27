@@ -22,11 +22,12 @@ const Container = styled.div`
 `;
 
 const Message = styled.h2`
+  min-height: 100px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 375px;
-  min-height: 100px;
+  text-align: center;
 `;
 
 const ChatListComponent = (params: params) => {
