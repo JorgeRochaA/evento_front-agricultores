@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import MessageInput from "./message_input/messageInput";
+import MessageInput from "./message_input";
 import Header from "./message-header";
 
 const Container = styled.div`
