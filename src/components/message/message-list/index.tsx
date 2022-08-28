@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import MessageCard from "../message-card";
 import { message } from "../../../types";
+import {useEffect, useRef} from 'react'
 
 const Container = styled.div`
     display: flex;
@@ -27,6 +28,11 @@ export interface params {
 }
 
 
+const AlwaysScrollToBottom = () => {
+    const elementRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+    useEffect(() => elementRef.current.scrollIntoView());
+    return <div ref={elementRef} />;
+};
 
 const App = (params: params): JSX.Element =>{
 
@@ -47,6 +53,7 @@ const App = (params: params): JSX.Element =>{
                         />
                     )
                 }
+                <AlwaysScrollToBottom/>
             </Container>
         </>
     )

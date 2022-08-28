@@ -1,3 +1,5 @@
-import MessageInput  from './messageInput'
+import MessageInput, {props}  from './messageInput'
+
+export {type props}
 
 export default MessageInput
