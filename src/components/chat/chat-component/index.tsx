@@ -112,13 +112,13 @@ const ChatComponent = (props: params) => {
 	useEffect(() => {
 		if (props.lastMessage) {
 			setLastMessage({
-				message: props.lastMessage.message,
-				created_at: createCreatedAt(props.lastMessage.createdAt),
+				message: props.lastMessage.textMessage,
+				created_at: createCreatedAt(props.lastMessage.created_at),
 			});
 		} else {
 			getLastMessageByChat(props.id).then((res) => {
 				if (res.length > 0) {
-					const message = res[0];
+					const message = res[res.length - 1];
 					setLastMessage({
 						message: message.textMessage,
 						created_at: createCreatedAt(message.created_at),
