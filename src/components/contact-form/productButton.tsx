@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Button } from '../common'
 
@@ -15,10 +15,15 @@ const ProductButton = styled(Button)<{isSelect:boolean}>`
 interface params {
     name: string;
     onSelect?: (name: string, state: boolean)=>void
+    reset: boolean
 }
 
 const App = (params:params):JSX.Element => {
     const [select, setSelect] = useState<boolean>(false)
+
+    useEffect(()=>{
+        if(params.reset) setSelect(false)
+    }, [params.reset])
 
     const handleClick = () => { 
         setSelect(!select)
@@ -26,7 +31,7 @@ const App = (params:params):JSX.Element => {
     }
 
     return (
-        <ProductButton onClick={handleClick} isSelect={select}>
+        <ProductButton onClick={handleClick} isSelect={select} type='button'>
             {params.name}
         </ProductButton>
     )

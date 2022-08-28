@@ -34,8 +34,9 @@ const ChatListComponent = (params: params) => {
   const EmptyChats = <Message>No hay chats para mostrar</Message>;
   const ShowChats = params.chats.map((chat, index) => {
     return (
-      <ChatComponent
+      <ChatComponent        
         key={index}
+        id={chat.id}
         name={chat.name}
         chat={"1"}
         onOpenChat={function onOpenChat() {

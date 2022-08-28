@@ -1,13 +1,13 @@
 import axios from "axios"
 import { URL as local} from './base'
 
-const URL = true ? 
+const URL = false ? 
     'https://virtserver.swaggerhub.com/JKCRAFTDOM_1/Evento2/1.0.0'
     : local
 
 export interface formValues {
-    userWholesaler: string;
-    userFarmer: string;
+    receiver: string;
+    emisor: string;
     message: string;
     products: string[];
 }
@@ -17,6 +17,7 @@ export interface response {
 }
 
 export const sendMessage = async (data: formValues) => {
-    const res = await axios.post<response>(`${URL}/api/contact-wholesaler`, data)
+    const res = await axios.post<string>(`${URL}/chatrooms`, data)
+    console.log(res)
     return res.data
 }

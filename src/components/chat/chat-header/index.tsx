@@ -38,7 +38,7 @@ function MessageHeader(itemsObj: items) {
 
   return (
     <div className="main-container test">
-      <h3 className="title">MENSAJES</h3>
+      <h3 className="title">CHATS</h3>
       <div className="secondary-container">
         <input
           id="input"
