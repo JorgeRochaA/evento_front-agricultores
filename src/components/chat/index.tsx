@@ -44,8 +44,11 @@ const App = () => {
 	};
 
 	const getNameChat = (chat: chatroom, username: string): string => { 
-		return username === chat.emisor? chat.receiver : chat.emisor
-	}	
+		const emisor = chat.emisor || ''
+		const receiver = chat.receiver || ''
+		return username === emisor? receiver : emisor
+	}
+
 	useEffect(() => {
 		getChatsByUser(user.username).then((res) => {
 			let chatsBg: chats[] = [];
