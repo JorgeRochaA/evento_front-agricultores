@@ -15,6 +15,16 @@ interface props {
   onNewMessage: (message: formValues) => void;
   sender: string;
 }
+const styleMessage = {
+  height: "20px",
+  width: "260px",
+  display: "flex",
+  justifyContent: "start",
+  alignItems: "center",
+  fontSize: "12px",
+  backgroundColor: "transparent",
+  color: "red",
+};
 const MessageInput = (props: props) => {
   const { loading, init, error } = usePost();
   const { showMessage, initTimer } = useTimer(3);
@@ -59,38 +69,14 @@ const MessageInput = (props: props) => {
       }}
     >
       {errors.textMessage ? (
-        <MessageError
-          style={{
-            height: "20px",
-            width: "260px",
-            display: "flex",
-            justifyContent: "start",
-            alignItems: "center",
-            fontSize: "12px",
-            backgroundColor: "transparent",
-            color: "red",
-          }}
-        >
+        <MessageError style={styleMessage}>
           {errors.textMessage && errors.textMessage.message}
         </MessageError>
       ) : (
         ""
       )}
       {showMessage && error ? (
-        <MessageError
-          style={{
-            height: "20px",
-            width: "260px",
-            display: "flex",
-            justifyContent: "start",
-            alignItems: "center",
-            fontSize: "12px",
-            backgroundColor: "transparent",
-            color: "red",
-          }}
-        >
-          mensaje no enviado
-        </MessageError>
+        <MessageError style={styleMessage}>mensaje no enviado</MessageError>
       ) : (
         ""
       )}
