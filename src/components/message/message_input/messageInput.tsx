@@ -33,7 +33,7 @@ const MessageInput = (props: props) => {
 
   const onSubmit: SubmitHandler<formValues> = async () => {
     let newMessage: formValues = {
-      chatRoomId: 1,
+      chatRoomId: props.chat,
       created_at: new Date().toISOString(),
       emisor: props.sender,
       textMessage: message,
