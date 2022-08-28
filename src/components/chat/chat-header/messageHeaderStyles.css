@@ -23,7 +23,7 @@
 }
 
 .input {
-  height: 25px;
+  max-height: 35px;
   width: 80px;
   border: none;
   padding: 10px;
