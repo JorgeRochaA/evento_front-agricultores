@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import MessageInput from "./message_input";
+import MessageInput, {props as paramsInput} from "./message_input";
 import Header from "./message-header";
 import MessageList from "./message-list";
 import { Message } from "../common";
@@ -36,13 +36,14 @@ const App = () => {
 	const [messages, setMessages] = useState<message[]>([]);
 	const [visibleMessages, setVisibleMessage] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(false);
+	
 
 	useEffect(() => {
 		if (chatroom.id === 0) {
 			setVisibleMessage(false);
 		} else {
 			setVisibleMessage(true);
-			getMessages()
+			getMessages();
 		}
 	}, [chatroom.id]);
 
@@ -53,21 +54,26 @@ const App = () => {
 				setMessages(res);
 			})
 			.finally(() => setLoading(false));
-	}
+	};
 
 	const handleClose = () => setVisibleMessage(false);
 
-	const handleNewMessage = () => {
-		getMessages()
-	}
+	const handleNewMessage:paramsInput["onNewMessage"] = (message) => {
+		setMessages(messagesPrev => [...messagesPrev, message])
+		
+	};
 
 	return (
-		<Container>
+		<Container >
 			{visibleMessages ? (
 				<>
 					<Header name={chatroom.name} onClose={handleClose} />
 					<MessageList messages={messages} username={user.username} />
-					<MessageInput />
+					<MessageInput
+						chat={chatroom.id}
+						onNewMessage={handleNewMessage}
+						sender={user.username}
+					/>
 				</>
 			) : (
 				<MessageVisible>
