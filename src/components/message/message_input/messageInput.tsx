@@ -1,14 +1,15 @@
 import "./messageInputStyles.css";
 import { createMessage } from "../../../services/messages";
-import { response, formValues } from "../../../services/messages";
 import { IoIosSend } from "react-icons/io";
 import { MessageError } from "../../common/index";
+import { response, formValues } from "../../../services/messages";
 import { schemaMessage } from "../../../schemas/message";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ReactLoading from "react-loading";
 import usePost from "../../../hooks/usePost";
+import useTimer from "../../../hooks/useTimerMessage";
 interface props {
   chat: number;
   onNewMessage: (message: formValues) => void;
@@ -16,6 +17,7 @@ interface props {
 }
 const MessageInput = (props: props) => {
   const { loading, init, error } = usePost();
+  const { showMessage, initTimer } = useTimer(3);
   const [message, setMessage] = useState("");
 
   const handleChange = (e: any): void => {
@@ -39,7 +41,7 @@ const MessageInput = (props: props) => {
       textMessage: message,
     };
     const res = await init<response>(() => createMessage(newMessage));
-
+    initTimer();
     if (res) {
       setMessage("");
       props.onNewMessage(res);
@@ -74,7 +76,7 @@ const MessageInput = (props: props) => {
       ) : (
         ""
       )}
-      {error ? (
+      {showMessage && error ? (
         <MessageError
           style={{
             height: "20px",
@@ -92,6 +94,7 @@ const MessageInput = (props: props) => {
       ) : (
         ""
       )}
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
