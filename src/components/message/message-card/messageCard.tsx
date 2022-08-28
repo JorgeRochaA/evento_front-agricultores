@@ -1,14 +1,18 @@
 import './messageCardStyles.css';
 
-interface params {
+export interface params {
   message: string,
   isTextSent: boolean
 }
 
 function MessageCard(params: params) {
   const time = new Date()
+  let className = 'message-container'
+
+  if(params.isTextSent) className += ' message-sent'
+
   return (
-    <div className="main-container">
+    <div className={className}>
       <div className="text-container">
         <p className={params.isTextSent ? "text-sent" : "text-received"}>
           {params.message}

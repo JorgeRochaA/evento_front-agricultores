@@ -25,15 +25,26 @@ export interface wholesaler {
   productType: string;
   sector: string;
   country: string;
-  appUser: user;
+  username: string;
 }
 
 export interface chatroom {
-  name: string;
+  id : number;
+  name?: string;
+  receiver?: string;
+  emisor?: string;
   lastMessage?: message;
 }
 
 export interface message {
   message: string;
   createdAt: string;
+  sender?: string;
+}
+
+export interface lastMessage {
+  chatRoomId: number,
+  emisor: string,
+  textMessage: string,
+  created_at: string    
 }

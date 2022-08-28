@@ -4,7 +4,7 @@ import { loginUser, setToken, setUserStorage } from '../../services/auth'
 import { formValues, loginUserResponse } from '../../services/auth/types' 
 import { stateAsync} from '../../types'
 import { AxiosError } from "axios";
-import { errorService } from "../../services/base";
+import { errorService } from "../../services/types";
 
 interface authState {
     user: loginUserResponse;

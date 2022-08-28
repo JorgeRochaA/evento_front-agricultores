@@ -1,11 +1,20 @@
-.main-container{
+.message-container{
     display: flex;
     margin: 2px 0;
-    max-width: 75%;
+    background-color: #eee;
+    width: 100%;
+}    
+
+.message-container.message-sent{
+    flex-direction: row-reverse;
 }
+
 
 .text-container{
     margin: 5px 0;
+    display: flex;
+    max-width: 80%;
+    
 }
 
 .text-container:first-child > .text-sent{
@@ -18,7 +27,7 @@
 
 .text-sent{
     margin: 0;
-    display: flex;
+    display: inline-flex;
     padding: 10px;
     color: white;
     min-height: 20px;
@@ -29,11 +38,11 @@
 
 .text-received{
     margin: 0;
-    display: flex;
+    display: inline-flex;
     padding: 10px;
     color: white;
     min-height: 20px;
-    align-items: flex-end;
+    align-items: flex-end;    
     background-color: var(--color3);
     border-radius: 0 20px 20px 0;
 }
