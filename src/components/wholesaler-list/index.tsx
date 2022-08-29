@@ -63,6 +63,7 @@ const App = (params:params) => {
         setWholesalerSelect(wholesaler)
         setShowModal(true)
     }
+    
     return (
         <Container style={params.style}>
             <ReactModal isOpen={showModal} style={style}>

@@ -8,6 +8,7 @@ const Container = styled.div`
     display:flex;
     justify-content: center;
     gap: 10px;
+    height: 40%;
 `
 interface params {
     style?: React.CSSProperties;
