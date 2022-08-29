@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import user from "../../assets/user.png";
 
 export const Card = styled.main`
   width: 400px;
@@ -40,7 +39,7 @@ interface params {
   style?: React.CSSProperties;
 }
 export const ImageUser = (params: params) => {
-  return <ImageCircle src={user} style={params.style} />;
+  return <ImageCircle src={'/user.png'} style={params.style} />;
 };
 
 export const Input = styled.input`
