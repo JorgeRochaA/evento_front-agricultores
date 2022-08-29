@@ -124,9 +124,9 @@ const ChatComponent = (props: params) => {
 	}, []);
 
 	const handleClick = () => { 
-		const {id, name: nameDefault} = props
+		const {id, name: nameDefault, bg_color: color} = props
 		const name = nameDefault || ''
-		props.onOpenChat({id, name})
+		props.onOpenChat({id, name, color})
 	}
 	return (
 		<Card onClick={handleClick}>
