@@ -10,6 +10,10 @@ Sitio web para que agricultores pequeños, medianos y grandes hagan llegar sus p
 3. Ejecutar el comando: npm install
 4. Ejecutar el comando: npm run dev
 
+[Deploy](https://630d1aa1dad2301c28b8d7d2--celebrated-otter-dc0a48.netlify.app/)
 ## Integrantes
-
+-Jorge
+-Erikson
+-Cubet
+-Jheremy
 
