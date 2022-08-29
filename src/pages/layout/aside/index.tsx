@@ -5,13 +5,25 @@ import { BiMessageRoundedDetail } from "react-icons/bi";
 import { useAppSelector } from "../../../redux/hooks";
 import { selectUser } from "../../../redux/slices/auth";
 
+const media = {
+  table: "@media screen and (min-width: 895px)",
+};
+
 const Aside = styled.aside`
-	background-color: #fff;
-	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-	padding: 0.5rem;
-	position: fixed;
-	height: 100%;
-	width: 123px;
+  height: 90px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #fff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 0.5rem;
+  ${media.table} {
+    position: fixed;
+    height: 100%;
+    width: 123px;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 `;
 
 const App = (): JSX.Element => {
