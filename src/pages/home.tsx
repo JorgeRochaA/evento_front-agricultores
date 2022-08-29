@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import buyer from "../assets/buyer.jpg";
-import icon from "../assets/search.png";
 
 const Container = styled.div`
   width: 100%;
@@ -128,11 +126,11 @@ const page = () => {
           </Paragraph>
           <SearchContainer>
             <Search type="text" placeholder="Buscar mayorista por producto" />
-            <Icon src={icon} alt="icon" />
+            <Icon src={"/search.png"} alt="icon" />
           </SearchContainer>
         </Contenido>
         <Image>
-          <BuyerImage src={buyer} alt="buyer" />
+          <BuyerImage src={"/buyer.jpg"} alt="buyer" />
         </Image>
       </Banner>
     </Container>

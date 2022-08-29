@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { selectUser } from "../../../redux/slices/auth";
 import { useAppSelector } from "../../../redux/hooks";
 import { useState } from "react";
-import logo from "../../../assets/logo.png";
 import UserInfo from "../../../components/user";
 
 const header = () => {
@@ -17,7 +16,7 @@ const header = () => {
 	return (
 		<Container>
 			<Link to="/">
-				<Logo src={logo} alt="logo" />
+				<Logo src={"/logo.png"} alt="logo" />
 			</Link>
 			<Burger className={menuIsOpen ? "open" : ""} onClick={toggleMenu}>
 				<div className="bar"></div>

@@ -4,7 +4,6 @@ import ContainerInput from "./containerInput";
 import Products, { params as paramsProducts } from "./products";
 import { Label, Error } from "../common";
 import { useEffect, useState } from "react";
-import account from "../../assets/account.png";
 import ProductButton from "./productButton";
 import { sendMessage } from "../../services/contact";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -72,7 +71,7 @@ const App = (params: params): JSX.Element => {
 			<Contact.Body>
 				<ContainerInput label={wholesaler.name} error={errors.receiver}>
 					<Contact.InputContact
-						icon={account}
+						icon={'/account.png'}
 						readOnly
 						{...register("receiver")}
 					/>
