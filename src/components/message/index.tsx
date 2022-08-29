@@ -11,11 +11,12 @@ import { getMessagesByChatroom } from "../../services/chat";
 import { selectUser } from "../../redux/slices/auth";
 import { clearChatRoom, selectChatRoom } from "../../redux/slices/chatroom";
 
-const Container = styled.div`
-	flex: 0 0 50%;
+const Container = styled.section`
+	flex: 0 0 60%;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	background-color: #eee;
 `;
 
 const MessageVisible = styled(Message)`

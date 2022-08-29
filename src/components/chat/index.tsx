@@ -12,7 +12,7 @@ interface chats extends chatroom {
 	bg_color: string;
 }
 const Container = styled.div`
-	flex: 0 0 50%;
+	flex: 0 0 40%;
 	height: 100%;
 	overflow-y: scroll;
 	overflow-x: hidden;
