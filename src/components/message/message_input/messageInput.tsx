@@ -1,11 +1,10 @@
-import "./messageInputStyles.css";
+import styles from "./messageInputStyles.module.css";
 import { createMessage } from "../../../services/messages";
 import { IoIosSend } from "react-icons/io";
 import { MessageError } from "../../common/index";
 import { response, formValues } from "../../../services/messages";
 import { schemaMessage } from "../../../schemas/message";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ReactLoading from "react-loading";
 import usePost from "../../../hooks/usePost";
@@ -56,12 +55,12 @@ const MessageInput = (props: props) => {
 
 	return (
 		<div
-			className="input-container"
+			className={styles.input_container}
 			style={{
 				flexDirection: "column",
 				position: "fixed",
 				bottom: "10px",
-				width: "45%",
+				width: "55%",
 			}}
 		>
 			{errors.textMessage ? (
@@ -83,10 +82,10 @@ const MessageInput = (props: props) => {
 				<input
 					type="text"
 					placeholder="Mensaje..."
-					className="input"
+					className={styles.input}
 					{...register("textMessage")}
 				/>
-				<button type="submit" className="btn">
+				<button type="submit" className={styles.btn}>
 					{loading ? (
 						<ReactLoading
 							className="loader"
