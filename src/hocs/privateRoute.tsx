@@ -1,22 +1,25 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
-import {getToken } from '../services/auth'
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { getToken } from "../services/auth";
 
 interface params {
-  children: React.ReactNode
+	children: React.ReactNode;
+	rol: string;
+	page: string;
 }
 
+const privateRoute = (params: params): any => {
+	const token = getToken();
 
-const privateRoute = (params: params) : any => {
+	if (!token) {
+		return <Navigate to="/login" replace={true} />;
+	}
 
-  const token = getToken()
+	if (params.rol === "MAYORISTA" && params.page === "wholesalers") {
+		return <Navigate to="/messages" replace={true} />;
+	}
 
-  if(!token){
-    console.log('proteccion')
-    return <Navigate to="/login" replace={true}/>
-  }
+	return params.children;
+};
 
-  return params.children
-}
-
-export default privateRoute
+export default privateRoute;
