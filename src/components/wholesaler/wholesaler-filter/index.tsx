@@ -9,6 +9,10 @@ import { CardFilters } from '../../common'
 const Container = styled.div`
   border-radius: .5rem;
   padding: 0 1rem 1rem 0;
+  display: none;
+  @media screen and (min-width: 1253px) {
+      display: block;
+  }
 `
 const Title = styled.h3`
   color: var(--color3);
