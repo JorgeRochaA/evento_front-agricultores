@@ -6,9 +6,10 @@ import MessageList from "./message-list";
 import { Message } from "../common";
 import { message } from "../../types";
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { getMessagesByChatroom } from "../../services/chat";
 import { selectUser } from "../../redux/slices/auth";
+import { clearChatRoom, selectChatRoom } from "../../redux/slices/chatroom";
 
 const Container = styled.div`
 	flex: 0 0 50%;
@@ -30,14 +31,13 @@ const MessageVisible = styled(Message)`
 `;
 
 const App = () => {
-	//const chatroom = useAppSelector();
-	const chatroom = { id: 1, name: "mayorista 1" };
+	const chatroom = useAppSelector(selectChatRoom);
 	const user = useAppSelector(selectUser);
 	const [messages, setMessages] = useState<message[]>([]);
 	const [visibleMessages, setVisibleMessage] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(false);
+	const dispatch = useAppDispatch()
 	
-
 	useEffect(() => {
 		if (chatroom.id === 0) {
 			setVisibleMessage(false);
@@ -56,7 +56,10 @@ const App = () => {
 			.finally(() => setLoading(false));
 	};
 
-	const handleClose = () => setVisibleMessage(false);
+	const handleClose = () => {
+		dispatch(clearChatRoom())
+		setVisibleMessage(false)
+	};
 
 	const handleNewMessage:paramsInput["onNewMessage"] = (message) => {
 		setMessages(messagesPrev => [...messagesPrev, message])
