@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import MessageInput, {props as paramsInput} from "./message_input";
+import MessageInput, { props as paramsInput } from "./message_input";
 import Header from "./message-header";
 import MessageList from "./message-list";
 import { Message } from "../common";
@@ -36,8 +36,8 @@ const App = () => {
 	const [messages, setMessages] = useState<message[]>([]);
 	const [visibleMessages, setVisibleMessage] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(false);
-	const dispatch = useAppDispatch()
-	
+	const dispatch = useAppDispatch();
+
 	useEffect(() => {
 		if (chatroom.id === 0) {
 			setVisibleMessage(false);
@@ -57,20 +57,23 @@ const App = () => {
 	};
 
 	const handleClose = () => {
-		dispatch(clearChatRoom())
-		setVisibleMessage(false)
+		dispatch(clearChatRoom());
+		setVisibleMessage(false);
 	};
 
-	const handleNewMessage:paramsInput["onNewMessage"] = (message) => {
-		setMessages(messagesPrev => [...messagesPrev, message])
-		
+	const handleNewMessage: paramsInput["onNewMessage"] = (message) => {
+		setMessages((messagesPrev) => [...messagesPrev, message]);
 	};
 
 	return (
-		<Container >
+		<Container>
 			{visibleMessages ? (
 				<>
-					<Header name={chatroom.name} onClose={handleClose} />
+					<Header
+						name={chatroom.name}
+						onClose={handleClose}
+						colorImage={chatroom.color}
+					/>
 					<MessageList messages={messages} username={user.username} />
 					<MessageInput
 						chat={chatroom.id}

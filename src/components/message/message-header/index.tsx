@@ -42,6 +42,7 @@ const InfoContainer = styled(OptionsContainer)`
 interface params {
 	name: string;
 	state: string;
+	colorImage: string;
 	onClose?: () => void;
 }
 
@@ -60,7 +61,7 @@ const App = (params: params) => {
 					style={{ cursor: "pointer" }}
 					onClick={handleClose}
 				/>
-				<Image name={params.name} />
+				<Image name={params.name} colorImage={params.colorImage}/>
 				<TextContainer>
 					<TextUser>{params.name}</TextUser>
 					<TextState>{params.state}</TextState>
