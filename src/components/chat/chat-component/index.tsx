@@ -4,6 +4,10 @@ import { getLastMessageByChat } from "../../../services/chat";
 import { chatroom, chatRoomState } from "../../../types";
 import { createCreatedAt } from "./utils";
 
+const media = {
+  table: "@media screen and (min-width: 1250px)",
+};
+
 const Card = styled.div`
   height: 75px;
   width: 100%;
@@ -23,7 +27,10 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-left: 62px;
+  margin-left: 25px;
+  ${media.table} {
+    margin-left: 62px;
+  }
 `;
 
 const Letter = styled.div`
@@ -46,7 +53,10 @@ const Dot = styled.div`
 const NameContainer = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
-  margin-left: 59px;
+  margin-left: 25px;
+  ${media.table} {
+    margin-left: 59px;
+  }
 `;
 
 const Name = styled.div`
@@ -73,7 +83,10 @@ const HourContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 59px;
+  margin-left: 25px;
+  ${media.table} {
+    margin-left: 59px;
+  }
 `;
 
 const Hour = styled.div`
