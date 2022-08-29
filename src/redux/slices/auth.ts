@@ -31,7 +31,6 @@ export const loginAsync = createAsyncThunk(
         } catch (error) {
             const err = error as AxiosError
             const res = err.response?.data as errorService
-            console.log(res)
             return rejectWithValue(res)
         }
 
@@ -59,7 +58,6 @@ export const authSlice = createSlice({
                 state.user = action.payload
             })
             .addCase(loginAsync.rejected, (state, action)=> {
-                console.log(action)
                 state.status = 'failed'
                 state.error = action.payload as errorService
             })

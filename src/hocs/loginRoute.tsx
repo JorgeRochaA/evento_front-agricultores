@@ -7,7 +7,6 @@ interface params {
 }
 
 const loginRoute = (params: params) : any => {
-  console.log('login')
   
   const token = getToken()
   if(token){
