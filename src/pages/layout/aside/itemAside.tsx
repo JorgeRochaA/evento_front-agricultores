@@ -24,6 +24,7 @@ interface params {
     children: React.ReactNode;
     text: string;
     pathname: string;
+    rol: string;
 }
 
 const App = (params: params) => {
@@ -31,6 +32,9 @@ const App = (params: params) => {
         ? style
         : {...style, opacity: '.5' }
 
+    if(params.rol === 'MAYORISTA' && params.page === '/wholesalers')
+        styleLink.display = 'none'
+    
     return (    
         <Link to={params.page} style={styleLink}>        
             {params.children}

@@ -12,7 +12,8 @@ export const registerUser = async (data: types.formValuesRegister) =>{
 
 export const loginUser = async (data: types.formValues) => {
     const res = await axios.post( `${BASE_URL}/signin`, data)
-    let {email, username, appUserRole} = res.data  
+    let {email, username, authorities} = res.data  
+    let appUserRole = authorities[0].authority
     let user = {email, username, appUserRole} as types.loginUserResponse
     return user
 }
