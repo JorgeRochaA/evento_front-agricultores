@@ -26,6 +26,7 @@ export interface wholesaler {
 	sector: string;
 	country: string;
 	username: string;
+	image?: string;
 }
 
 export interface chatroom {
@@ -39,6 +40,7 @@ export interface chatroom {
 export interface chatRoomState {
 	id: number;
 	name: string;
+	color: string;
 }
 
 export interface message {

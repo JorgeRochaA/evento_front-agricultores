@@ -19,7 +19,7 @@ export interface response {
     totalPages: number;
     total: number;
     isNextFinal: boolean;
-    isPreviousInitial: boolean;
+    isPreviousInitial: boolean;    
 }
 
 export const filterWholesalers = async (data:formValues ) =>{    

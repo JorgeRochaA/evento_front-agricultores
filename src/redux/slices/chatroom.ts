@@ -1,8 +1,9 @@
 import { RootState } from "../store";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { chatRoomState } from "../../types";
+import { getRandomColor } from "../../components/chat/utils";
 
-const chatRoomEmpty: chatRoomState = {id: 0, name: ''}
+const chatRoomEmpty: chatRoomState = {id: 0, name: '', color: getRandomColor()}
 
 const initialState = {
     data: chatRoomEmpty

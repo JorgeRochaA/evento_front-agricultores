@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
-import {formValues, filterWholesalers, wholesalerResponse} from '../../../services/wholesalers'
-import {property} from '../../../types'
+import {formValues, filterWholesalers} from '../../../services/wholesalers'
+import {property, wholesaler} from '../../../types'
 import { initialState } from "./utils";
 import _ from 'lodash'
 
@@ -25,7 +25,7 @@ export const wholesalers = createSlice({
     name: 'wholesalers',
     initialState,
     reducers: {
-        setWholesalers: (state, action: PayloadAction<wholesalerResponse[]>) => {
+        setWholesalers: (state, action: PayloadAction<wholesaler[]>) => {
             state.wholesalers = action.payload
         },
         clearWholesalers: (state) => {
@@ -86,7 +86,7 @@ export const selectIsSortLocal = (state: RootState) => state.wholesalers.options
 export const selectSortWholesalers = (state: RootState) => {
     const wholesalers = state.wholesalers.wholesalers
     const sortBy = state.wholesalers.options.sortBy
-    return _.sortBy(wholesalers, [sortBy, 'asc']) as wholesalerResponse[]
+    return _.sortBy(wholesalers, [sortBy, 'asc']) as wholesaler[]
 }
 
 export const selectCountWholesaler = (state: RootState) => state.wholesalers.wholesalers.length

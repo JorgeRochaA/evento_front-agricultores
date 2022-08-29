@@ -1,5 +1,5 @@
-import { formValues, wholesalerResponse } from "../../../services/wholesalers";
-import { stateAsync } from "../../../types";
+import { formValues} from "../../../services/wholesalers";
+import { stateAsync,wholesaler } from "../../../types";
 
 
 export interface options extends formValues{
@@ -14,7 +14,7 @@ export interface paginate {
 }
 
 export interface wholesalersState {
-    wholesalers: wholesalerResponse[];
+    wholesalers: wholesaler[];
     status: stateAsync;
     options: options;
     paginate: paginate
