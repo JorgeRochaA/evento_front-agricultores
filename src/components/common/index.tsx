@@ -16,13 +16,13 @@ export const Card = styled.main`
 `;
 
 //background-color: var(--color9);
-export const CardFilters = styled.main`
+export const CardFilters = styled.div`
   max-width: 300px;
   box-shadow: 0 4px 4px #5e738e80;
   padding: 10px;
+  margin: 1rem 0;
   border-radius: 4px;
   background-color: #fff;
-  margin: 1rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,5 +1,5 @@
-import { user, wholesaler } from "../../../types/index";
-import "./itemWholesalerStyles.css";
+import { wholesaler } from "../../../types/index";
+import styles from "./itemWholesalerStyles.module.css";
 
 interface items extends wholesaler{
     image:string,
@@ -19,22 +19,22 @@ function ItemWholesaler(itemsObj:items) {
     }
 
   return (
-    <div className="card-main-container">
-        <div className="card-img-container">
-            <img src={itemsObj.image} alt="image post" className="card-img"/>
+    <div className={styles.card_main_container}>
+        <div className={styles.card_img_container}>
+            <img src={itemsObj.image} alt="image post" className={styles.card_img}/>
         </div>
         <div>
-            <h3 className="card-main-title">
-                <strong className="card-title">{itemsObj.name}</strong>|
-                <span className="card-country">{itemsObj.country}</span>|
-                <span className="card-main-badge">{itemsObj.sector}</span>
+            <h3 className={styles.card_main_title}>
+                <strong className={styles.card_title}>{itemsObj.name}</strong>|
+                <span className={styles.card_country}>{itemsObj.country}</span>|
+                <span className={styles.card_main_badge}>{itemsObj.sector}</span>
             </h3>
-            <p className="card-description">{itemsObj.description}</p>
-            <p className="card-secondary-container-badges">
+            <p className={styles.card_description}>{itemsObj.description}</p>
+            <p className={styles.card_secondary_container_badges}>
                 {
                     products.map((product,index) =>(
                         <span
-                            className="card-secondary-badge"
+                            className={styles.card_secondary_badge}
                             key={index}
                         >
                             {product}
@@ -43,8 +43,8 @@ function ItemWholesaler(itemsObj:items) {
                 }
             </p>
         </div>
-        <div className="card-btn-container">
-            <button className="card-btn" onClick={handleOnContact}>Contactar ✉</button>
+        <div className={styles.card_btn_container}>
+            <button className={styles.card_btn} onClick={handleOnContact}>Contactar ✉</button>
         </div>
     </div>
   )

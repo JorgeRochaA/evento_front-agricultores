@@ -5,13 +5,12 @@ import {BiSortAlt2} from 'react-icons/bi'
 import {itemOptionsPerPage, sortOptions} from './utils'
 import { filterWholesalersAsync,
     selectPages,
-    selectTotalPages,
     selectTotalWholesaler, 
     setOptionItemPerPage, 
     setOptionSortBy } from '../../../redux/slices/wholesalers'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 
-const Container = styled.div`
+const Container = styled.article`
     display:flex;
     flex-direction: column;
     justify-content: space-between;
@@ -20,7 +19,7 @@ const Container = styled.div`
     margin-top: 1rem;
     background-color: #fff;
     border-radius: .5rem;
-    width: 80%;
+    width: 99%;    
 
     @media screen and (min-width: 655px) {
 
@@ -28,7 +27,6 @@ const Container = styled.div`
     @media screen and (min-width: 1253px) {
         flex-direction: row;
         padding: 1rem;
-        width: 100%;
     }
 `
 const ResultText = styled.div`` 

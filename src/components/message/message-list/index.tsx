@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import MessageCard from "../message-card";
 import { message } from "../../../types";
+import {useEffect, useRef} from 'react'
 
 const Container = styled.div`
     display: flex;
@@ -27,11 +28,15 @@ export interface params {
 }
 
 
+const AlwaysScrollToBottom = () => {
+    const elementRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+    useEffect(() => elementRef.current.scrollIntoView());
+    return <div ref={elementRef} />;
+};
 
 const App = (params: params): JSX.Element =>{
 
-    const isUserMessage = (sender:message["sender"]) =>  {
-
+    const isUserMessage = (sender:message["emisor"]) =>  {
         return sender? params.username === sender : false
     }
 
@@ -42,11 +47,13 @@ const App = (params: params): JSX.Element =>{
                     params.messages.map((v, i) => 
                         <MessageCard 
                             key={i} 
-                            isTextSent={isUserMessage(v.sender)}
-                            message={v.message}
+                            isTextSent={isUserMessage(v.emisor)}
+                            message={v.textMessage}
+                            created_at={v.created_at}
                         />
                     )
                 }
+                <AlwaysScrollToBottom/>
             </Container>
         </>
     )

@@ -1,50 +1,58 @@
 export type stateAsync = "idle" | "pending" | "succeeded" | "failed";
 
 export enum messageType {
-  FAILED,
-  SUCCEEDED,
+	FAILED,
+	SUCCEEDED,
 }
 
 export interface messageUser {
-  message: string;
-  type: messageType;
+	message: string;
+	type: messageType;
 }
 
 export interface property {
-  name: string;
-  value: string;
+	name: string;
+	value: string;
 }
 
 export interface user {
-  username: string;
+	username: string;
 }
 
 export interface wholesaler {
-  name: string;
-  description: string;
-  productType: string;
-  sector: string;
-  country: string;
-  username: string;
+	name: string;
+	description: string;
+	productType: string;
+	sector: string;
+	country: string;
+	username: string;
+	image?: string;
 }
 
 export interface chatroom {
-  id : number;
-  name?: string;
-  receiver?: string;
-  emisor?: string;
-  lastMessage?: message;
+	id: number;
+	name?: string;
+	receiver?: string;
+	emisor?: string;
+	lastMessage?: message;
+}
+
+export interface chatRoomState {
+	id: number;
+	name: string;
+	color: string;
 }
 
 export interface message {
-  message: string;
-  createdAt: string;
-  sender?: string;
+	chatRoomId?: number;
+	textMessage: string;
+	created_at: string;
+	emisor?: string;
 }
 
 export interface lastMessage {
-  chatRoomId: number,
-  emisor: string,
-  textMessage: string,
-  created_at: string    
+	chatRoomId: number;
+	emisor: string;
+	textMessage: string;
+	created_at: string;
 }

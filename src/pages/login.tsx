@@ -37,7 +37,7 @@ const login = () => {
       if(data.type === 'auth/login/rejected') 
         initTimer()
       else 
-        navigate("/panel-user", {replace:true})
+        navigate("/wholesalers", {replace:true})
     })  
 
   }

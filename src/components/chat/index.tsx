@@ -6,12 +6,13 @@ import { getChatsByUser } from "../../services/chat";
 import { chatroom } from "../../types";
 import { selectUser } from "../../redux/slices/auth";
 import { useAppSelector } from "../../redux/hooks";
+import { getRandomColor } from "./utils";
 
 interface chats extends chatroom {
 	bg_color: string;
 }
 const Container = styled.div`
-	flex: 0 0 50%;
+	flex: 0 0 40%;
 	height: 100%;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -30,24 +31,18 @@ const Container = styled.div`
 	}
 `;
 
+const getNameChat = (chat: chatroom, username: string): string => { 
+	const emisor = chat.emisor || ''
+	const receiver = chat.receiver || ''
+	return username === emisor? receiver : emisor
+}
+
+
 const App = () => {
 	const user = useAppSelector(selectUser);
 	const [chats, setChats] = useState<chats[]>([]);
 	const [filteredChats, setFilteredChats] = useState<chats[]>([]);
 	const [nameFilter, setNameFilter] = useState("");
-
-	const getRandomColor = () => {
-		return (
-			"#" +
-			((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0")
-		);
-	};
-
-	const getNameChat = (chat: chatroom, username: string): string => { 
-		const emisor = chat.emisor || ''
-		const receiver = chat.receiver || ''
-		return username === emisor? receiver : emisor
-	}
 
 	useEffect(() => {
 		getChatsByUser(user.username).then((res) => {

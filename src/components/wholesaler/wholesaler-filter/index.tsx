@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import FilterBy, {params as paramsFilterBy} from '../wholesaler-filter-by'
-import { formValues } from '../../../services/wholesalers'
 import { useAppDispatch } from '../../../redux/hooks'
 import { filterWholesalersAsync, setOptionsFilter } from '../../../redux/slices/wholesalers'
 import { property } from '../../../types'
@@ -9,8 +8,7 @@ import { CardFilters } from '../../common'
 
 const Container = styled.div`
   border-radius: .5rem;
-  margin-top: 10px;
-  padding: 1rem;
+  padding: 0 1rem 1rem 0;
 `
 const Title = styled.h3`
   color: var(--color3);

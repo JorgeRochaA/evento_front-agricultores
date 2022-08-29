@@ -1,77 +1,81 @@
-import styled from 'styled-components'
-import Image from './image'
-import Input from './input'
-import {BiArrowBack } from 'react-icons/bi'
+import styled from "styled-components";
+import Image from "./image";
+import Input from "./input";
+import { BiArrowBack } from "react-icons/bi";
 
 const Container = styled.div`
-  height: 50px;
-  background-color: var(--color2);
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0 .5rem;
-  width: 100%;
-  box-sizing: border-box;
-` 
+	height: 50px;
+	background-color: var(--color2);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0 0.5rem;
+	width: 100%;
+	box-sizing: border-box;
+`;
 
 const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-`
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+`;
 const TextUser = styled.span`
-  color: var(--color1);
-  height: 1rem;
-  font-weight: bold;
-`
+	color: var(--color1);
+	height: 1rem;
+	font-weight: bold;
+`;
 
 const TextState = styled.span`
-  color: var(--color8);
-  font-size: .6rem;
-`
+	color: var(--color8);
+	font-size: 0.6rem;
+`;
 const OptionsContainer = styled.div`
-  display: flex;
-  align-items: center; 
-`
+	display: flex;
+	align-items: center;
+`;
 
 const InfoContainer = styled(OptionsContainer)`
-  gap: .5rem;
-`
+	gap: 0.5rem;
+`;
 
 interface params {
-  name: string;
-  state: string;
+	name: string;
+	state: string;
+	colorImage: string;
+	onClose?: () => void;
 }
 
 const App = (params: params) => {
-  const handleSearch = (value:string) => { 
+	const handleSearch = (value: string) => {};
 
-  }
+	const handleClose = () => {
+		if (typeof params.onClose === "function") params.onClose();
+	};
 
-  const handleClose = () => {
-    
-  }
-
-  return (
-    <Container>
-        <InfoContainer>
-          <BiArrowBack  color='var(--color1)' style={{cursor:'pointer'}} onClick={handleClose}/>
-          <Image name={params.name}/>
-          <TextContainer>
-            <TextUser>{params.name}</TextUser>
-            <TextState>{params.state}</TextState>
-          </TextContainer>
-        </InfoContainer>
-        <OptionsContainer>
-          <Input onSearch={handleSearch}/>
-        </OptionsContainer>        
-    </Container>
-  )
-}
+	return (
+		<Container>
+			<InfoContainer>
+				<BiArrowBack
+					color="var(--color1)"
+					style={{ cursor: "pointer" }}
+					onClick={handleClose}
+				/>
+				<Image name={params.name} colorImage={params.colorImage}/>
+				<TextContainer>
+					<TextUser>{params.name}</TextUser>
+					<TextState>{params.state}</TextState>
+				</TextContainer>
+			</InfoContainer>
+			<OptionsContainer>
+				<Input onSearch={handleSearch} />
+			</OptionsContainer>
+		</Container>
+	);
+};
 
 App.defaultProps = {
-  state: 'Online'
-}
+	state: "Online",
+};
 
-export default App
+export default App;

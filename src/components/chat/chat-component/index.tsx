@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getLastMessageByChat } from "../../../services/chat";
-import { chatroom, lastMessage } from "../../../types";
-
-interface params extends chatroom {
-	chat: string;
-	newMessagesCount?: number;
-	onOpenChat: (chat: string) => void;
-	bg_color: string;
-}
+import { chatroom, chatRoomState } from "../../../types";
+import {createCreatedAt} from './utils'
 
 const Card = styled.div`
 	height: 75px;
@@ -94,31 +88,32 @@ const NewTotalMessages = styled.div`
 	font-size: 13px;
 `;
 
-const ChatComponent = (props: params) => {
-	const [lastMessage, setLastMessage] = useState<{
-		message: string;
-		created_at: any;
-	}>();
+interface lastMessageState {
+	message: string;
+	created_at: string;
+}
 
-	const createCreatedAt = (created_at: string): string => {
-		const date = new Date(created_at);
-		const hour = date.getHours() % 12 || 12;
-		return `${hour.toString().padStart(2, "0")}:${date
-			.getMinutes()
-			.toString()
-			.padStart(2, "0")}`;
-	};
+export interface params extends chatroom {
+	chat: string;
+	newMessagesCount?: number;
+	onOpenChat: (chatRoom: chatRoomState) => void;
+	bg_color: string;
+}
+
+const ChatComponent = (props: params) => {
+
+	const [lastMessage, setLastMessage] = useState<lastMessageState|null>(null);
 
 	useEffect(() => {
 		if (props.lastMessage) {
 			setLastMessage({
-				message: props.lastMessage.message,
-				created_at: createCreatedAt(props.lastMessage.createdAt),
+				message: props.lastMessage.textMessage,
+				created_at: createCreatedAt(props.lastMessage.created_at),
 			});
 		} else {
 			getLastMessageByChat(props.id).then((res) => {
 				if (res.length > 0) {
-					const message = res[0];
+					const message = res[res.length - 1];
 					setLastMessage({
 						message: message.textMessage,
 						created_at: createCreatedAt(message.created_at),
@@ -128,8 +123,13 @@ const ChatComponent = (props: params) => {
 		}
 	}, []);
 
+	const handleClick = () => { 
+		const {id, name: nameDefault, bg_color: color} = props
+		const name = nameDefault || ''
+		props.onOpenChat({id, name, color})
+	}
 	return (
-		<Card onClick={() => props.onOpenChat(props.chat)}>
+		<Card onClick={handleClick}>
 			<ImageContainer style={{ backgroundColor: props.bg_color }}>
 				<Letter>{props.name?.charAt(0)}</Letter>
 				<Dot className="dot" />

@@ -1,56 +1,57 @@
-.card-main-container {
+
+.card_main_container {
     padding: 10px;
     display: grid;
     max-width: 350px;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: #fff;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-.card-img-container{
+.card_img_container{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.card-img{
-    width: 50%;
+.card_img{
+    width: 20%;
     border-radius: 20%;
 }
 
-.card-main-title{
+.card_main_title{
     margin: 10px 0 10px 0;
     text-align: center;
 }
 
-.card-title{
+.card_title{
     margin: 0 5px 0 0;
 }
 
-.card-country{
+.card_country{
     opacity: 0.6;
     font-size: 16px;
     font-weight: bold;
     margin: 0 5px 0 5px;
 }
 
-.card-description{
+.card_description{
     text-align: justify;
     text-justify: inter-word;
 }
 
-.card-btn-container{
+.card_btn_container{
     display: flex;
     justify-content: center;
     align-items: center
 }
 
-.card-btn-container button{
+.card_btn_container button{
     width: 150px;
     height: 50px;
 }
 
-.card-btn{
+.card_btn{
     border: none;
     border-radius: 20px;
     color: white;
@@ -60,7 +61,7 @@
     transition: all 0.5s ease-out;
 }
 
-.card-btn:hover{
+.card_btn:hover{
     border: 1px solid #151F35;
     border-radius: 20px;
     color: #151F35;
@@ -69,7 +70,7 @@
     cursor: pointer;
 }
 
-.card-main-badge{
+.card_main_badge{
     color: #2C3C5B;
     padding: 2px 5px;
     text-align: center;
@@ -80,12 +81,12 @@
     border: 1px #2C3C5B solid;
 }
 
-.card-secondary-container-badges{
+.card_secondary_container_badges{
     text-align: center;
     margin: 10px 0;
 }
 
-.card-secondary-badge{
+.card_secondary_badge{
     border: none;
     color:  white;
     font-size: 12px;
@@ -97,24 +98,24 @@
 }
 
 @media only screen and (min-width: 768px) {
-    .card-main-container {
+    .card_main_container {
         display: grid;
         grid-template-columns: 0.5fr 1fr 0.5fr;
+        width: 100%;
         max-width: 800px;
         background-color: #fff;
         box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
-        border-radius: 20px;
-        padding: 15px;
+        padding: 10px;
     }
-    .card-img{
-        width: 80%;
+    .card_img{
+        width: 50%;
         border-radius: 20%;
     }
-    .card-main-title{
+    .card_main_title{
         margin: 10px 0 10px 0;
         text-align: start;
     }
-    .card-secondary-container-badges{
+    .card_secondary_container_badges{
         text-align: start;
         margin: 5px 0 0 0;
     }
