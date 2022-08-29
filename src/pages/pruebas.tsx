@@ -43,7 +43,6 @@ const App = () => {
         style={style}
         >
         <GrFormClose style={styleClose} size='1.5rem' onClick={handleClose}/>
-        <ContactForm/>
       </ReactModal>
      
     </div>;
