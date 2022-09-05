@@ -1,0 +1,85 @@
+{"chats":[
+    {
+      "name": "Mayorista 1",
+      "lastMessage": {
+        "message": "Ultimo mensaje",
+        "createdAt": "2022-08-15T01:52:48.983Z"
+      }
+    },
+    {
+      "name": "Mayorista 2",
+      "lastMessage": {
+        "message": "Hola",
+        "createdAt": "2022-08-15T01:52:48.983Z"
+      }
+    },
+    {
+      "name": "Mayorista 3",
+      "lastMessage": {
+        "message": "Hola como estas",
+        "createdAt": "2022-08-15T01:52:48.983Z"
+      }
+    },
+    {
+      "name": "Mayorista 4",
+      "lastMessage": {
+        "message": "Buenas tardes",
+        "createdAt": "2022-08-15T01:52:48.983Z"
+      }
+    },
+    {
+      "name": "Mayorista 5",
+      "lastMessage": {
+        "message": "Ocupado",
+        "createdAt": "2022-08-15T01:52:48.983Z"
+      }
+    }
+  ],
+  "messagesChat": [
+    {
+      "message": "hola agricultor",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "mayorista1"
+    },
+    {
+      "message": "hola mayorista",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "agricultor"
+    },
+    {
+      "message": "hola 1",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "mayorista1"
+    },
+    {
+      "message": " Buenos días este saludo se usa hasta las horas antes del mediodía. Buenas noches se usa a partir de las 6 de la tarde",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "agricultor"
+    },
+    {
+      "message": "hola mayorista",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "agricultor"
+    },
+    {
+      "message": "hola 1",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "mayorista1"
+    },
+    {
+      "message": " Buenos días este saludo se usa hasta las horas antes del mediodía. Buenas noches se usa a partir de las 6 de la tarde",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "agricultor"
+    },
+    {
+      "message": "hola mayorista",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "agricultor"
+    },
+    {
+      "message": "hola 1",
+      "createdAt": "2022-08-15T01:52:48.983Z",
+      "sender": "mayorista1"
+    }
+  ]
+}
